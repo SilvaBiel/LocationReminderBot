@@ -2,29 +2,46 @@ import configparser
 from cryptography.fernet import Fernet
 import telebot
 
+key_filename = "fernet.properties"
+token_filename = "token.properties"
+path = "C:/Users/golub/Documents/ReminderAssistantBot/"
 
-def load_fernet_properties():
+key_path = path + key_filename
+encrypted_token_path = path + token_filename
 
+
+def read_file(filepath: str):
     """
-    Loads fernet properties to decrypt token from disk.
+    Load the previously generated key
     """
 
-    return open("fernet.properties", "rb").read()
+    return open(filepath, "rb").read()
 
 
-def read_bot_token():
+def decrypt_message(encrypted_data: bytes):
+    """
+    Decrypts an encrypted message
+    """
+    loaded_key = read_file(key_path)
+    fernet_object = Fernet(loaded_key)
+    decrypted_message = fernet_object.decrypt(encrypted_data)
 
-    config = configparser.ConfigParser()
-    config.read("config.properties")
-    encrypted_token = config.get("BOT", "Token")
+    return decrypted_message.decode()
 
-    f = Fernet(load_fernet_properties())
-    token = f.decrypt(encrypted_token.encode())
+
+def get_bot_token():
+    encrypted_token = open(encrypted_token_path, "rb").read()
+    token = decrypt_message(encrypted_token)
 
     return token
 
-bot = telebot.Telebot( read_bot_token() )
+
+bot = telebot.TeleBot(get_bot_token())
+
 
 @bot.message_handler(commands=['start'])
 def start_message(message):
     bot.send_message(message.chat.id, "Привет!")
+
+
+bot.polling()
