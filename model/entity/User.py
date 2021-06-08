@@ -3,14 +3,14 @@ from sqlalchemy import Table, ForeignKey
 from sqlalchemy.orm import relationship
 from datetime import datetime
 
-from Base import Base
+from model.entity.Base import declarative_base
 
-users_tasks_association = Table("users_tasks", Base.metadata,
+users_tasks_association = Table("users_tasks", declarative_base.metadata,
                                 Column("user_id", Integer, ForeignKey("user.id")),
-                                Column("task_id"), Integer, ForeignKey("task.id"))
+                                Column("task_id", Integer, ForeignKey("task.id")))
 
 
-class User(Base):
+class User(declarative_base):
     __tablename__ = "users"
 
     id = Column(Integer, primary_key=True)

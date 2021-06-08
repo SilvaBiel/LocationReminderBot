@@ -1,6 +1,10 @@
-import configparser
 from cryptography.fernet import Fernet
 import telebot
+import logging
+from telebot import types
+
+logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+                     level=logging.INFO)
 
 key_filename = "fernet.properties"
 token_filename = "token.properties"
@@ -39,9 +43,17 @@ def get_bot_token():
 bot = telebot.TeleBot(get_bot_token())
 
 
+# start command handler
 @bot.message_handler(commands=['start'])
-def start_message(message):
-    bot.send_message(message.chat.id, "Привет!")
+def command_start_handler(message):
+    cid = message.chat.id
+    bot.send_chat_action(cid, 'typing')
+    markup = types.ReplyKeyboardMarkup(row_width=1, resize_keyboard=True)
+    button_geo = types.KeyboardButton(text='send location', request_location=True)
+    markup.add(button_geo)
+    bot.send_message(cid, 'Hello stranger, please choose commands from the menu', reply_markup=markup)
 
 
-bot.polling()
+# application entry point
+if __name__ == '__main__':
+    bot.polling(none_stop=True, interval=0)
