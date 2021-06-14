@@ -5,7 +5,7 @@ from model.entity.Task import Task
 class TaskDao:
 
     def __init__(self):
-        self.session = Session
+        self.session = Session()
 
     def get_all_tasks(self) -> list:
         all_tasks_list = self.session.query(Task).all()
@@ -24,7 +24,9 @@ class TaskDao:
         self.session.commit()
 
     def delete_task(self, task: Task):
+        self.session.add(task)
         self.session.commit()
 
     def edit_task(self, task: Task):
+        self.session.add(task)
         self.session.commit()

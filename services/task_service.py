@@ -16,7 +16,6 @@ class TaskService:
         pass
 
     def delete_task(self):
-        #mark as completed
         pass
 
     def edit_task(self):

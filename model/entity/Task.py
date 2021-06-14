@@ -1,18 +1,11 @@
-from sqlalchemy import Column, String, Integer, DateTime, Numeric
-from sqlalchemy import Table, ForeignKey
+from sqlalchemy import Column, String, Integer, DateTime, Numeric, ForeignKey
 from sqlalchemy.orm import relationship
-
-from model.entity.Base import declarative_base
+from model.entity.Base import Base
 from model.entity.User import User
 
-declarative_base.metadata.clear()
-users_tasks_association = Table("users_tasks", declarative_base.metadata,
-                                Column("user_id", Integer, ForeignKey("user.id")),
-                                Column("task_id", Integer, ForeignKey("task.id")))
 
-
-class Task(declarative_base):
-    __tablename__ = "users"
+class Task(Base):
+    __tablename__ = "tasks"
 
     id = Column(Integer, primary_key=True)
     header = Column(String)
@@ -22,9 +15,13 @@ class Task(declarative_base):
     radius = Column(Integer)
     datetime = Column(DateTime)
     state = Column(String)
-    user = relationship("User", secondary=users_tasks_association)
+
+    user_id = Column(Integer, ForeignKey('users.id'))
+    user = relationship("User", back_populates="tasks_list")
 
     def __init__(self, header: str, body: str, user: User):
         self.header = header
         self.body = body
         self.user = user
+        self.user_id = user.id
+
