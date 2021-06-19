@@ -1,7 +1,7 @@
 from sqlalchemy import Column, String, Integer, DateTime
 from sqlalchemy.orm import relationship
 from datetime import datetime
-from model.entity.Base import Base
+from model.entity.base import Base
 import hashlib
 
 

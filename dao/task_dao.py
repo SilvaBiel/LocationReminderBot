@@ -1,5 +1,5 @@
-from model.entity.Base import Session
-from model.entity.Task import Task
+from model.entity.base import Session
+from model.entity.task import Task
 
 
 class TaskDao:

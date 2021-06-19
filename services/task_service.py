@@ -1,19 +1,21 @@
-from dao.task_dao import *
+from dao.task_dao import TaskDao
 import re
 from geopy.geocoders import Nominatim
 from services.user_service import UserService
+from model.entity.task import Task
 
 
 class TaskService:
     task_dao = TaskDao()
     bot = None
-    chat_id_tasks_cache = dict()
     geo_locator = Nominatim(user_agent="taskReminderBot")
     user_service = UserService()
+    chat_id_tasks_cache = dict()
 
     def add_task_header_step(self, message):
         cid = message.chat.id
         header = message.text
+        self.chat_id_tasks_cache = dict()
         if header:
             msg = self.bot.reply_to(message, "Great, now please enter task body.")
             self.bot.register_next_step_handler(msg, self.add_task_body_step)
@@ -27,10 +29,14 @@ class TaskService:
         body = message.text
         user = self.user_service.get_user_by_chat_id(cid)
         if body:
-            msg = self.bot.reply_to(message, "Fantastic, task is ready, if you like to add location or date reminder, \
-                                         please write /datetime or /location or /skip to finish and save created task.")
+            msg = self.bot.reply_to(message, "Fantastic, task is almost ready, \n"
+                                             "if you like to add location or date reminder,\n"
+                                             "please select /datetime or /location, \n"
+                                             "if you don't need this, select /skip to finish and save created task.")
             self.bot.register_next_step_handler(msg, self.add_location_or_datetime_reminder)
-            task = Task(self.chat_id_tasks_cache[cid], body, user)
+            header = self.chat_id_tasks_cache[cid]
+            task = Task(header, body, user)
+            self.task_dao.save_task(task)
             self.chat_id_tasks_cache[cid] = task
         else:
             msg = self.bot.reply_to(message, "Task body is empty, please provide correct task body.")

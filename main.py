@@ -1,13 +1,9 @@
 from cryptography.fernet import Fernet
 import telebot
 import logging
-from telebot import types
 from services.user_service import UserService
 from services.task_service import TaskService
-
-from model.entity.User import User
-from model.entity.Task import Task
-from services import task_service
+from model.entity.user import User
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                     level=logging.INFO)

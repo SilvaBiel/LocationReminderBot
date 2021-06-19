@@ -1,7 +1,7 @@
 from sqlalchemy import Column, String, Integer, DateTime, Numeric, ForeignKey
 from sqlalchemy.orm import relationship
-from model.entity.Base import Base
-from model.entity.User import User
+from model.entity.base import Base
+from model.entity.user import User
 
 
 class Task(Base):
@@ -14,8 +14,7 @@ class Task(Base):
     location_longitude = Column(Numeric)
     radius = Column(Integer)
     datetime = Column(DateTime)
-    state = Column(String)
-    # state = "active" or "done" string
+    state = Column(String) # state = "active" or "done" string
 
     user_id = Column(Integer, ForeignKey('users.id'))
     user = relationship("User", back_populates="tasks_list")
@@ -26,4 +25,5 @@ class Task(Base):
         self.user = user
         self.user_id = user.id
         self.radius = radius
+        self.state = "active"
 
