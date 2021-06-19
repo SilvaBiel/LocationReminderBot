@@ -15,13 +15,15 @@ class Task(Base):
     radius = Column(Integer)
     datetime = Column(DateTime)
     state = Column(String)
+    # state = "active" or "done" string
 
     user_id = Column(Integer, ForeignKey('users.id'))
     user = relationship("User", back_populates="tasks_list")
 
-    def __init__(self, header: str, body: str, user: User):
+    def __init__(self, header: str, body: str, user: User, radius: Integer = 2000):
         self.header = header
         self.body = body
         self.user = user
         self.user_id = user.id
+        self.radius = radius
 

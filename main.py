@@ -2,13 +2,15 @@ from cryptography.fernet import Fernet
 import telebot
 import logging
 from telebot import types
-from services.task_service import  TaskService
 from services.user_service import UserService
+from services.task_service import TaskService
+
 from model.entity.User import User
 from model.entity.Task import Task
+from services import task_service
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-                     level=logging.INFO)
+                    level=logging.INFO)
 
 key_filename = "fernet.properties"
 token_filename = "token.properties"
@@ -43,16 +45,19 @@ def get_bot_token():
 
     return token
 
+
 bot = telebot.TeleBot(get_bot_token())
-user_service = UserService()
 task_service = TaskService()
+user_service = UserService()
+task_service.bot = bot
+
+chat_id_tasks_cache = dict()
 
 
 @bot.message_handler(commands=["start"])
 def command_start_handler(message):
     cid = message.chat.id
     bot.send_chat_action(cid, "typing")
-
     user = user_service.get_user_by_chat_id(cid)
     if user:
         bot.send_message(cid, "Hello, %s, long time no see, how can i be helpfull?" % message.chat.first_name)
@@ -73,16 +78,13 @@ def get_help(message):
 
 @bot.message_handler(commands=["add_task"])
 def add_task(message):
-    cid = message.chat.id
-    user = user_service.get_user_by_chat_id(cid)
-    if user:
-        text_arguments = message.text.split("/add_task", 1)
-        if text_arguments:
-            text_arguments = text_arguments[-1]
-            print("text_arguments:", text_arguments)
-        pass
-        # after task was added if it have location coordinates than ask if user want to
-        # shar his location
+    msg = bot.reply_to(message, "Great, let's add a new task!\nPlease enter task header.")
+    bot.register_next_step_handler(msg, task_service.add_task_header_step)
+
+
+
+
+
 
 """
 @bot.message_handler(commands=['get_all_tasks'])

@@ -19,7 +19,7 @@ class TaskDao:
         active_tasks_list = self.session.query(Task).filter(Task.state == "completed")
         return active_tasks_list
 
-    def add_task(self, task: Task):
+    def save_task(self, task: Task):
         self.session.add(task)
         self.session.commit()
 
