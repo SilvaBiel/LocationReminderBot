@@ -54,7 +54,6 @@ class TaskService:
             self.bot.reply_to(message, "Great, %s task was successfully saved." % message.chat.first_name)
         elif text == "/location":
             msg = self.bot.reply_to(message, "%s please enter desired location reminder for task. "
-                                             "You have two options:"
                                              "1) latitude, longitude"
                                              "2) or City, Street, Home"
                                              "arguments must be separated by spaces." % message.chat.first_name)
@@ -69,7 +68,7 @@ class TaskService:
         location = message.text
         cid = message.chat.id
         task = self.chat_id_tasks_cache[cid]
-        if not re.search('[a-zA-Z]', location):
+        if re.match(r'^(-?\d+(\.\d+)?),\s*(-?\d+(\.\d+)?)$', location):
             location_arguments = location.split(" ")
             if len(location) == 3:
                 latitude = location_arguments[0]
@@ -91,15 +90,16 @@ class TaskService:
         self.bot_location_wrong_syntax(message)
 
     def bot_location_wrong_syntax(self, message):
-        self.bot.reply_to("Wrong syntax.")
+        self.bot.reply_to(message, "Wrong syntax.")
         msg = self.bot.reply_to(message, "%s please enter desired location reminder for task. "
                                          "You have two options:"
                                          "1) latitude, longitude  and notification radius in metres,"
                                          "2) or City, Street, Home "
                                          "arguments must be separated by spaces." % message.chat.first_name)
-        self.bot.register_next_step_handler(msg, self.finish_location_adding_to_task)
+        self.bot.register_next_step_handler(msg, self.add_location_to_task)
 
     def finish_location_adding_to_task(self, message):
+        # TODO: ADD TWO BUTTONS YES AND NO, IF YES THEN SAVE, if NO THEN AGAIN TO LOCATION ADDER
         text = message.text
         cid = message.chat.id
         task = self.chat_id_tasks_cache[cid]
@@ -109,10 +109,10 @@ class TaskService:
     def check_founded_location_step(self, message):
         cid = message.chat.id
         task = self.chat_id_tasks_cache[cid]
-        location = self.geo_locator.revers(task.latitude, task.longitude)
+        location = self.geo_locator.reverse("%s, %s" % (task.latitude, task.longitude))
         msg = self.bot.reply_to(message, "Please check that founded location is correct,"
                                          "founded location:%s" % location)
-        self.bot.register_next_step_handler(msg, self.add_location_to_task)
+        self.bot.register_next_step_handler(msg, self.finish_location_adding_to_task)
 
     def add_datetime_to_task(self, message):
         datetime = message.text
