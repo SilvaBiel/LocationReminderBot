@@ -4,6 +4,8 @@ import logging
 from services.user_service import UserService
 from services.task_service import TaskService
 from model.entity.user import User
+from model.entity.task import Task
+
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                     level=logging.INFO)
@@ -55,6 +57,7 @@ def command_start_handler(message):
     cid = message.chat.id
     bot.send_chat_action(cid, "typing")
     user = user_service.get_user_by_chat_id(cid)
+
     if user:
         bot.send_message(cid, "Hello, %s, long time no see, how can i be helpfull?" % message.chat.first_name)
     else:
@@ -69,6 +72,8 @@ def get_help(message):
     cid = message.chat.id
     bot.send_chat_action(cid, 'typing')
     # TODO: add help lines
+    # TODO: automate help, which will iterate over all funcs of this method(maybe marked for example)
+    # with returning info docs for each function
     bot.send_message(cid, "help!")
 
 

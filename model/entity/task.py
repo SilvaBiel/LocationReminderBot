@@ -14,7 +14,7 @@ class Task(Base):
     location_longitude = Column(Numeric)
     radius = Column(Integer)
     datetime = Column(DateTime)
-    state = Column(String) # state = "active" or "done" string
+    state = Column(String)  # state = "active" or "done" string
 
     user_id = Column(Integer, ForeignKey('users.id'))
     user = relationship("User", back_populates="tasks_list")
@@ -23,7 +23,7 @@ class Task(Base):
         self.header = header
         self.body = body
         self.user = user
-        self.user_id = user.id
+        # self.user_id = user.id
         self.radius = radius
         self.state = "active"
 

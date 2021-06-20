@@ -28,6 +28,9 @@ class TaskService:
         cid = message.chat.id
         body = message.text
         user = self.user_service.get_user_by_chat_id(cid)
+        if user:
+            user = user[0]
+
         if body:
             msg = self.bot.reply_to(message, "Fantastic, task is almost ready, \n"
                                              "if you like to add location or date reminder,\n"

@@ -5,18 +5,21 @@ from model.entity.task import Task
 class TaskDao:
 
     def __init__(self):
-        self.session = Session()
+        self.session = Session
 
     def get_all_tasks(self) -> list:
         all_tasks_list = self.session.query(Task).all()
+        self.session.commit()
         return all_tasks_list
 
     def get_active_tasks(self) -> list:
         active_tasks_list = self.session.query(Task).filter(Task.state == "active")
+        self.session.commit()
         return active_tasks_list
 
     def get_completed_tasks(self) -> list:
         active_tasks_list = self.session.query(Task).filter(Task.state == "completed")
+        self.session.commit()
         return active_tasks_list
 
     def save_task(self, task: Task):
