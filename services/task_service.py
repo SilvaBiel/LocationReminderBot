@@ -3,6 +3,7 @@ import re
 from geopy.geocoders import Nominatim
 from services.user_service import UserService
 from model.entity.task import Task
+from telebot import types
 
 
 class TaskService:
@@ -63,6 +64,9 @@ class TaskService:
                                              "day, month of reminding time in format like this: "
                                              "HH:mm DD:MM." % message.chat.first_name)
             self.bot.register_next_step_handler(msg, self.add_datetime_to_task)
+        else:
+            msg = self.bot.reply_to(message, "Wrong syntax, try again")
+            self.bot.register_next_step_handler(msg, self.add_location_or_datetime_reminder)
 
     def add_location_to_task(self, message):
         location = message.text
@@ -86,8 +90,8 @@ class TaskService:
                 msg = self.bot.reply_to(message, "Sorry, specified location was not found, "
                                                  "please check entered address and try again")
                 self.bot.register_next_step_handler(msg, self.add_location_to_task)
-
-        self.bot_location_wrong_syntax(message)
+        else:
+            self.bot_location_wrong_syntax(message)
 
     def bot_location_wrong_syntax(self, message):
         self.bot.reply_to(message, "Wrong syntax.")
@@ -99,19 +103,22 @@ class TaskService:
         self.bot.register_next_step_handler(msg, self.add_location_to_task)
 
     def finish_location_adding_to_task(self, message):
-        # TODO: ADD TWO BUTTONS YES AND NO, IF YES THEN SAVE, if NO THEN AGAIN TO LOCATION ADDER
         text = message.text
         cid = message.chat.id
         task = self.chat_id_tasks_cache[cid]
-        if text == "yes":
+        if text == "/yes":
             self.task_dao.save_task(task)
+            msg = self.bot.reply_to(message, "Fantastic, task was successfully saved.")
+            self.bot.register_next_step_handler(msg, self.add_location_to_task)
+        elif text == "/no":
+            msg = self.bot.reply_to(message, "It look like we have wrong address, let's try it again!")
+            self.bot.register_next_step_handler(msg, self.add_location_to_task)
 
     def check_founded_location_step(self, message):
         cid = message.chat.id
         task = self.chat_id_tasks_cache[cid]
         location = self.geo_locator.reverse("%s, %s" % (task.latitude, task.longitude))
-        msg = self.bot.reply_to(message, "Please check that founded location is correct,"
-                                         "founded location:%s" % location)
+        msg = self.bot.reply_to(message, "Please check that founded location is correct:\n\n%s \n\n/yes    /no" % location)
         self.bot.register_next_step_handler(msg, self.finish_location_adding_to_task)
 
     def add_datetime_to_task(self, message):
