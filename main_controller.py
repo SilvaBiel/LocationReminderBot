@@ -5,6 +5,7 @@ from services.user_service import UserService
 from services.task_service import TaskService
 from model.entity.user import User
 from model.entity.task import Task
+from geopy.geocoders import Nominatim
 
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -65,6 +66,28 @@ def command_start_handler(message):
         user_service.add_user(new_user)
         bot.send_message(cid, "Hello, %s, it\'s nice to meet you, how can i help you?" % message.chat.first_name)
         bot.send_message(cid, "Super cool help commands:")
+
+
+@bot.message_handler(commands=["get_active_tasks"])
+def get_active_tasks(message):
+    cid = message.chat.id
+    user = user_service.get_user_by_chat_id(cid)
+    user_tasks = user.tasks_list
+    active_tasks = 0
+    for task in user_tasks:
+        if task.state == "active":
+            active_tasks += 1
+            result = task.header + "\n" + task.body
+            if task.location_latitude:
+                geo_locator = Nominatim(user_agent="taskReminderBot")
+                location = geo_locator.reverse("%s, %s" % (task.location_latitude, task.location_longitude))
+                result += "\n" + "location: " + str(location) + "\n" + "radius: " + str(task.radius) + " meteres"
+            if task.datetime:
+                result += "\n" + str(task.datetime)
+            bot.send_message(cid, result)
+
+    if active_tasks == 0:
+        bot.send_message(cid, "No task were founded for current user.")
 
 
 @bot.message_handler(commands=["help"])

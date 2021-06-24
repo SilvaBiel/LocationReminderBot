@@ -17,10 +17,10 @@ class UserDao:
         bytes_string_chat_id = str(user_chat_id).encode()
         hashed_cid = hashlib.md5(bytes_string_chat_id).hexdigest()
         statement = select(User).where(User.hashed_chat_id == hashed_cid)
-        user = self.session.execute(statement)
-        self.session.commit()
-        if user:
-            return user.fetchone()
+        result = self.session.execute(statement)
+        users = result.scalars().all()
+        if users:
+            return users[0]
         else:
             # TODO: LOG NOTHING IS FOUND
             pass
@@ -32,3 +32,4 @@ class UserDao:
         else:
             # TODO: LOG
             pass
+

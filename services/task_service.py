@@ -29,7 +29,7 @@ class TaskService:
         cid = message.chat.id
         body = message.text
         user = self.user_service.get_user_by_chat_id(cid)
-        if user:
+        if isinstance(user, list):
             user = user[0]
 
         if body:
@@ -77,14 +77,14 @@ class TaskService:
             if len(location) == 3:
                 latitude = location_arguments[0]
                 longitude = location_arguments[1]
-                task.latitude = latitude
-                task.longitude = longitude
+                task.location_latitude = latitude
+                task.location_longitude = longitude
                 self.check_founded_location_step(message)
         elif location:
             location = self.geo_locator.geocode(location)
             if location:
-                task.latitude = location.latitude
-                task.longitude = location.longitude
+                task.location_latitude = location.latitude
+                task.location_longitude = location.longitude
                 self.check_founded_location_step(message)
             else:
                 msg = self.bot.reply_to(message, "Sorry, specified location was not found, "
@@ -109,7 +109,6 @@ class TaskService:
         if text == "/yes":
             self.task_dao.save_task(task)
             msg = self.bot.reply_to(message, "Fantastic, task was successfully saved.")
-            self.bot.register_next_step_handler(msg, self.add_location_to_task)
         elif text == "/no":
             msg = self.bot.reply_to(message, "It look like we have wrong address, let's try it again!")
             self.bot.register_next_step_handler(msg, self.add_location_to_task)
@@ -117,7 +116,7 @@ class TaskService:
     def check_founded_location_step(self, message):
         cid = message.chat.id
         task = self.chat_id_tasks_cache[cid]
-        location = self.geo_locator.reverse("%s, %s" % (task.latitude, task.longitude))
+        location = self.geo_locator.reverse("%s, %s" % (task.location_latitude, task.location_longitude))
         msg = self.bot.reply_to(message, "Please check that founded location is correct:\n\n%s \n\n/yes    /no" % location)
         self.bot.register_next_step_handler(msg, self.finish_location_adding_to_task)
 
