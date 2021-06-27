@@ -6,6 +6,9 @@ from services.task_service import TaskService
 from model.entity.user import User
 from model.entity.task import Task
 from geopy.geocoders import Nominatim
+import re
+import glob
+import pathlib
 
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -20,6 +23,7 @@ encrypted_token_path = path + token_filename
 
 
 def read_file(filepath: str):
+
     """
     Load the previously generated key
     """
@@ -28,9 +32,11 @@ def read_file(filepath: str):
 
 
 def decrypt_message(encrypted_data: bytes):
+
     """
     Decrypts an encrypted message
     """
+
     loaded_key = read_file(key_path)
     fernet_object = Fernet(loaded_key)
     decrypted_message = fernet_object.decrypt(encrypted_data)
@@ -39,6 +45,11 @@ def decrypt_message(encrypted_data: bytes):
 
 
 def get_bot_token():
+
+    """
+    TODO:set token as environment variable
+    """
+
     encrypted_token = open(encrypted_token_path, "rb").read()
     token = decrypt_message(encrypted_token)
 
@@ -55,21 +66,34 @@ chat_id_tasks_cache = dict()
 
 @bot.message_handler(commands=["start"])
 def command_start_handler(message):
+
+    """
+    TODO:description
+    """
+
     cid = message.chat.id
     bot.send_chat_action(cid, "typing")
     user = user_service.get_user_by_chat_id(cid)
 
     if user:
-        bot.send_message(cid, "Hello, %s, long time no see, how can i be helpfull?" % message.chat.first_name)
+        bot.send_message(cid, "Hello, %s, long time no see, how can i be helpful?" % message.chat.first_name)
+        get_help(message)
     else:
         new_user = User(cid)
         user_service.add_user(new_user)
-        bot.send_message(cid, "Hello, %s, it\'s nice to meet you, how can i help you?" % message.chat.first_name)
-        bot.send_message(cid, "Super cool help commands:")
+        bot.send_message(cid, "Hello, %s, it\'s nice to meet you!" % message.chat.first_name)
+        get_help(message)
 
 
 @bot.message_handler(commands=["get_active_tasks"])
 def get_active_tasks(message):
+
+    """
+    TODO:description
+
+    /help//get_active_tasks - returns all active tasks for current user/help/
+    """
+
     cid = message.chat.id
     user = user_service.get_user_by_chat_id(cid)
     user_tasks = user.tasks_list
@@ -77,7 +101,10 @@ def get_active_tasks(message):
     for task in user_tasks:
         if task.state == "active":
             active_tasks += 1
-            result = task.header + "\n" + task.body
+            result = "Task id=%s\n"%task.id
+            result += task.header + "\n" + task.body
+            if task.location_latitude or task.datetime:
+                result += "\n---"
             if task.location_latitude:
                 geo_locator = Nominatim(user_agent="taskReminderBot")
                 location = geo_locator.reverse("%s, %s" % (task.location_latitude, task.location_longitude))
@@ -92,43 +119,53 @@ def get_active_tasks(message):
 
 @bot.message_handler(commands=["help"])
 def get_help(message):
+
+    """
+    TODO:description
+    """
+
     cid = message.chat.id
     bot.send_chat_action(cid, 'typing')
-    # TODO: add help lines
-    # TODO: automate help, which will iterate over all funcs of this method(maybe marked for example)
-    # with returning info docs for each function
-    bot.send_message(cid, "help!")
+    help_data = get_help_for_all_commands()
+    bot.send_message(cid, help_data)
 
 
 @bot.message_handler(commands=["add_task"])
 def add_task(message):
+
+    """
+    TODO:description
+
+    /help//add_task - will add a new task for you and save it in database/help/
+    """
+
     msg = bot.reply_to(message, "Great, let's add a new task!\nPlease enter task header.")
     bot.register_next_step_handler(msg, task_service.add_task_header_step)
 
 
+def get_help_for_all_commands():
+    result = ""
+    all_founded_methods = []
+    for filename in glob.iglob('**/**', recursive=True):
+        extension = pathlib.Path(filename).suffix
+        if extension == ".py":
+            file_object = open(filename)
+            data = file_object.read()
+            file_object.close()
+            help_data = re.findall('/help/(.*)/help/', data)
+            if help_data:
+                all_founded_methods.extend(help_data)
 
+    for data in all_founded_methods:
+        if re.search("[a-zA-Z]", data):
+            data = data + "\n"
+            result += data
+
+    return result
 
 
 
 """
-@bot.message_handler(commands=['get_all_tasks'])
-def get_all_tasks(message):
-    cid = message.chat.id
-    bot.send_chat_action(cid, 'typing')
-    
-    user = user_service.get_user_by_chat_id(cid)
-    if user:
-        print use
-    else:
-        bot.send_message(cid, 'Hello stranger, please choose commands from the menu', reply_markup=markup)
-
-    #get phone number
-    #encrypt it
-    #ask db service to return user all tasks
-
-
-
-
 def edit_task(message):
 
 
@@ -145,7 +182,10 @@ def start_tracking(message):
     # so user can share live location again
     
     
-def get_last_five_news(message):
+def get_world_news(message):
+
+
+def get_tech_news(message):
 
 
 def get_weather_today():
