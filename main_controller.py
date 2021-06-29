@@ -3,12 +3,11 @@ import telebot
 import logging
 from services.user_service import UserService
 from services.task_service import TaskService
+from services import help_search_service
 from model.entity.user import User
 from model.entity.task import Task
 from geopy.geocoders import Nominatim
-import re
-import glob
-import pathlib
+
 
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -23,7 +22,6 @@ encrypted_token_path = path + token_filename
 
 
 def read_file(filepath: str):
-
     """
     Load the previously generated key
     """
@@ -32,7 +30,6 @@ def read_file(filepath: str):
 
 
 def decrypt_message(encrypted_data: bytes):
-
     """
     Decrypts an encrypted message
     """
@@ -45,7 +42,6 @@ def decrypt_message(encrypted_data: bytes):
 
 
 def get_bot_token():
-
     """
     TODO:set token as environment variable
     """
@@ -93,7 +89,7 @@ def get_active_tasks(message):
 
     /help//get_active_tasks - returns all active tasks for current user/help/
     """
-    
+
     cid = message.chat.id
     user = user_service.get_user_by_chat_id(cid)
     user_tasks = user.tasks_list
@@ -101,7 +97,7 @@ def get_active_tasks(message):
     for task in user_tasks:
         if task.state == "active":
             active_tasks += 1
-            result = "#%s\n"%task.id
+            result = "#%s\n" % task.id
             result += task.header + "\n" + task.body
             if task.location_latitude or task.datetime:
                 result += "\n---"
@@ -122,11 +118,12 @@ def get_help(message):
 
     """
     TODO:description
+    /help//help - will show available commands/help/
     """
 
     cid = message.chat.id
     bot.send_chat_action(cid, 'typing')
-    help_data = get_help_for_all_commands()
+    help_data = help_search_service.get_help_for_all_commands()
     bot.send_message(cid, help_data)
 
 
@@ -134,8 +131,6 @@ def get_help(message):
 def add_task(message):
 
     """
-    TODO:description
-
     /help//add_task - will add a new task for you and save it in database/help/
     """
 
@@ -143,52 +138,93 @@ def add_task(message):
     bot.register_next_step_handler(msg, task_service.add_task_header_step)
 
 
-def get_help_for_all_commands():
-    result = ""
-    all_founded_methods = []
-    for filename in glob.iglob('**/**', recursive=True):
-        extension = pathlib.Path(filename).suffix
-        if extension == ".py":
-            file_object = open(filename)
-            data = file_object.read()
-            file_object.close()
-            help_data = re.findall('/help/(.*)/help/', data)
-            if help_data:
-                all_founded_methods.extend(help_data)
-
-    for data in all_founded_methods:
-        if re.search("[a-zA-Z]", data):
-            data = data + "\n"
-            result += data
-
-    return result
-
-
 @bot.message_handler(commands=["delete_task"])
 def delete_task(message):
+
+    """
+    /help//delete_task - delete task with id, specified after command,
+    separated by space (for example: /delete_task 42)/help/
+    """
+
     text = message.text
     task_id = text.split("/delete_task")[1]
     task_id = task_id.strip()
     if task_id.isdigit():
-        print("task is digit", task_id)
-        result = task_service.delete_task_by_id(task_id)
-        print("result:", result)
+        task_service.delete_task_by_id(task_id)
+        bot.reply_to(message, "Task has been deleted!")
     else:
         bot.reply_to(message, "Wrong input, no valid task id was found, please try again, "
                               "enter correct task id after command.")
 
 
+@bot.message_handler(commands=["complete_task"])
 def complete_task(message):
-    pass
+
+    """
+    /help//complete_task - mark task as completed,
+    task id must be specified after command, separated by space
+    (for example: /complete_task 42)/help/
+    """
+
+    text = message.text
+    task_id = text.split("/complete_task")[1]
+    task_id = task_id.strip()
+    if task_id.isdigit():
+
+        task = task_service.get_task_by_id(task_id)
+        if task:
+            task.state = "done"
+            task_service.update_task(task)
+            bot.reply_to(message, "Task has been marked as completed!")
+        else:
+            bot.reply_to(message, "Task with such is has not been found, please try again.")
+
+    else:
+        bot.reply_to(message, "Wrong input, no valid task id was found, please try again, "
+                              "enter correct task id after command.")
+
+
+@bot.message_handler(commands=["edit_task"])
+def edit_task(message):
+
+    """
+    /help//edit_task - command will edit task with given id,
+    syntax must be like this: /edit_task 34 header=new_header body=new_body,
+    so after command goes task id, separated by space, after id
+    will go parameters which you want to edit with parameter name equals value
+    task id must be specified after command, separated by space/help/
+    """
+
+    text = message.text
+    text = text.split("/edit_task", 1)[1].strip()
+    if "=" in text:
+        text = text.split(" ")
+        if text and text[0].strip().isdigit():
+            task_id = text[0].replace("#", "")
+            task = task_service.get_task_by_id(task_id)
+            for arg in text[1:]:
+                arg = arg.strip()
+                if "=" in arg:
+                    parameter = arg.split("=", 1)[0]
+                    value = arg.split("=", 1)[1]
+                    if hasattr(task, parameter):
+                        task.set_attr(parameter, value)
+                    else:
+                        bot.reply_to(message, "Parameter with such name not found(param_name:%s)"%parameter)
+
+                else:
+                    bot.reply_to(message, "Wrong input arguments, please try again "
+                                          "(syntax example: /edit_task #31 header=new_header body=new_body.")
+
+            task_service.update_task(task)
+        else:
+            bot.reply_to(message, "No task id been found, please specify task_id with # before id and try again, "
+                                  "for example: #12")
+    else:
+        bot.reply_to(message, "Wrong input, no data to change been found.")
 
 
 """
-def edit_task(message):
-
-
-
-
-
 def start_tracking(message):
     
     # here you need to count time which passed since this message,

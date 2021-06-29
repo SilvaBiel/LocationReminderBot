@@ -121,6 +121,13 @@ class TaskService:
         msg = self.bot.reply_to(message, "Please check that founded location is correct:\n\n%s \n\n/yes    /no" % location)
         self.bot.register_next_step_handler(msg, self.finish_location_adding_to_task)
 
+    def get_task_by_id(self, task_id:int) -> Task:
+        return self.task_dao.get_task_by_id(task_id)
+
     def delete_task_by_id(self, task_id:int) -> bool:
         result = self.task_dao.delete_task_by_id(task_id)
         print(result)
+
+    def update_task(self, task:Task):
+        if task:
+            self.task_dao.save_task(task)

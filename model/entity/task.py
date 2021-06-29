@@ -27,3 +27,6 @@ class Task(Base):
         self.radius = radius
         self.state = "active"
 
+    def set_attr(self, attribute_name, value):
+        setattr(self, attribute_name, value)
+

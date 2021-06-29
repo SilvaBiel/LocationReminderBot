@@ -1,6 +1,6 @@
 from model.entity.base import Session
 from model.entity.task import Task
-from sqlalchemy import delete
+from sqlalchemy import delete, select
 
 
 class TaskDao:
@@ -35,3 +35,13 @@ class TaskDao:
     def edit_task(self, task: Task):
         self.session.add(task)
         self.session.commit()
+
+    def get_task_by_id(self, task_id:int)->Task:
+        statement = select(Task).where(Task.id == task_id)
+        result = self.session.execute(statement)
+        tasks = result.scalars().all()
+        if tasks:
+            return tasks[0]
+        else:
+            # TODO: LOG NOTHING IS FOUND
+            pass
