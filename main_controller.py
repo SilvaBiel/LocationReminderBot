@@ -93,7 +93,7 @@ def get_active_tasks(message):
 
     /help//get_active_tasks - returns all active tasks for current user/help/
     """
-
+    
     cid = message.chat.id
     user = user_service.get_user_by_chat_id(cid)
     user_tasks = user.tasks_list
@@ -101,7 +101,7 @@ def get_active_tasks(message):
     for task in user_tasks:
         if task.state == "active":
             active_tasks += 1
-            result = "Task id=%s\n"%task.id
+            result = "#%s\n"%task.id
             result += task.header + "\n" + task.body
             if task.location_latitude or task.datetime:
                 result += "\n---"
@@ -164,15 +164,29 @@ def get_help_for_all_commands():
     return result
 
 
+@bot.message_handler(commands=["delete_task"])
+def delete_task(message):
+    text = message.text
+    task_id = text.split("/delete_task")[1]
+    task_id = task_id.strip()
+    if task_id.isdigit():
+        print("task is digit", task_id)
+        result = task_service.delete_task_by_id(task_id)
+        print("result:", result)
+    else:
+        bot.reply_to(message, "Wrong input, no valid task id was found, please try again, "
+                              "enter correct task id after command.")
+
+
+def complete_task(message):
+    pass
+
 
 """
 def edit_task(message):
 
 
-def delete_task(message):
 
-
-def complete_task(message):
 
 
 def start_tracking(message):

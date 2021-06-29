@@ -1,5 +1,6 @@
 from model.entity.base import Session
 from model.entity.task import Task
+from sqlalchemy import delete
 
 
 class TaskDao:
@@ -26,9 +27,10 @@ class TaskDao:
         self.session.add(task)
         self.session.commit()
 
-    def delete_task(self, task: Task):
-        self.session.add(task)
-        self.session.commit()
+    def delete_task_by_id(self, task_id: int) -> bool:
+        statement = delete(Task).where(Task.id == task_id)
+        result = self.session.execute(statement)
+        print("----result:", result)
 
     def edit_task(self, task: Task):
         self.session.add(task)

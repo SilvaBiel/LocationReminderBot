@@ -4,6 +4,7 @@ from geopy.geocoders import Nominatim
 from services.user_service import UserService
 from model.entity.task import Task
 from telebot import types
+from sqlalchemy import delete
 
 
 class TaskService:
@@ -120,5 +121,6 @@ class TaskService:
         msg = self.bot.reply_to(message, "Please check that founded location is correct:\n\n%s \n\n/yes    /no" % location)
         self.bot.register_next_step_handler(msg, self.finish_location_adding_to_task)
 
-    def add_datetime_to_task(self, message):
-        datetime = message.text
+    def delete_task_by_id(self, task_id:int) -> bool:
+        result = self.task_dao.delete_task_by_id(task_id)
+        print(result)
