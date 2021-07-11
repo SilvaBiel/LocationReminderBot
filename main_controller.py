@@ -8,8 +8,6 @@ from model.entity.user import User
 from model.entity.task import Task
 from geopy.geocoders import Nominatim
 
-
-
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                     level=logging.INFO)
 
