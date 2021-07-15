@@ -107,10 +107,10 @@ class TaskService:
         cid = message.chat.id
         task = self.chat_id_tasks_cache[cid]
         if re.match(r'^(-?\d+(\.\d+)?),\s*(-?\d+(\.\d+)?)$', location):
-            location_arguments = location.split(" ")
-            if len(location) == 3:
-                latitude = location_arguments[0]
-                longitude = location_arguments[1]
+            location_arguments = location.split(",")
+            if len(location_arguments) == 2:
+                latitude = location_arguments[0].strip()
+                longitude = location_arguments[1].strip()
                 task.location_latitude = latitude
                 task.location_longitude = longitude
                 self.check_founded_location_step(message)
@@ -148,6 +148,7 @@ class TaskService:
             self.bot.register_next_step_handler(msg, self.add_location_to_task)
 
     def check_founded_location_step(self, message):
+        print('checking....')
         cid = message.chat.id
         task = self.chat_id_tasks_cache[cid]
         location = self.geo_locator.reverse("%s, %s" % (task.location_latitude, task.location_longitude))

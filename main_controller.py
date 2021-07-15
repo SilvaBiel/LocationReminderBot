@@ -1,4 +1,3 @@
-from cryptography.fernet import Fernet
 import telebot
 import logging
 from services.user_service import UserService
@@ -7,6 +6,8 @@ from services import help_search_service
 from model.entity.user import User
 from model.entity.task import Task
 from geopy.geocoders import Nominatim
+from decimal import Decimal
+import os
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                     level=logging.INFO)
@@ -18,49 +19,17 @@ path = "C:/Users/golub/Documents/ReminderAssistantBot/"
 key_path = path + key_filename
 encrypted_token_path = path + token_filename
 
-
-def read_file(filepath: str):
-    """
-    Load the previously generated key
-    """
-
-    return open(filepath, "rb").read()
-
-
-def decrypt_message(encrypted_data: bytes):
-    """
-    Decrypts an encrypted message
-    """
-
-    loaded_key = read_file(key_path)
-    fernet_object = Fernet(loaded_key)
-    decrypted_message = fernet_object.decrypt(encrypted_data)
-
-    return decrypted_message.decode()
-
-
-def get_bot_token():
-    """
-    TODO:set token as environment variable
-    """
-
-    encrypted_token = open(encrypted_token_path, "rb").read()
-    token = decrypt_message(encrypted_token)
-
-    return token
-
-
-bot = telebot.TeleBot(get_bot_token())
+bot = telebot.TeleBot(os.getenv("REMINDER_BOT_TOKEN"))
 task_service = TaskService()
 user_service = UserService()
 task_service.bot = bot
+user_temp_cache = dict()
 
 chat_id_tasks_cache = dict()
 
 
 @bot.message_handler(commands=["start"])
 def command_start_handler(message):
-
     """
     TODO:description
     """
@@ -81,7 +50,6 @@ def command_start_handler(message):
 
 @bot.message_handler(commands=["get_active_tasks"])
 def get_active_tasks(message):
-
     """
     TODO:description
 
@@ -113,7 +81,6 @@ def get_active_tasks(message):
 
 @bot.message_handler(commands=["help"])
 def get_help(message):
-
     """
     TODO:description
     /help//help - will show available commands/help/
@@ -127,7 +94,6 @@ def get_help(message):
 
 @bot.message_handler(commands=["add_task"])
 def add_task(message):
-
     """
     /help//add_task - will add a new task for you and save it in database/help/
     """
@@ -138,7 +104,6 @@ def add_task(message):
 
 @bot.message_handler(commands=["delete_task"])
 def delete_task(message):
-
     """
     /help//delete_task - delete task with id, specified after command,
     separated by space (for example: /delete_task 42)/help/
@@ -157,7 +122,6 @@ def delete_task(message):
 
 @bot.message_handler(commands=["complete_task"])
 def complete_task(message):
-
     """
     /help//complete_task - mark task as completed,
     task id must be specified after command, separated by space
@@ -184,7 +148,6 @@ def complete_task(message):
 
 @bot.message_handler(commands=["edit_task"])
 def edit_task(message):
-
     """
     /help//edit_task - command will edit task with given id,
     syntax must be like this: /edit_task 34 header=new_header body=new_body,
@@ -207,8 +170,9 @@ def edit_task(message):
                     value = arg.split("=", 1)[1]
                     if hasattr(task, parameter):
                         task.set_attr(parameter, value)
+                        bot.reply_to(message, "Task has been successfully updated!")
                     else:
-                        bot.reply_to(message, "Parameter with such name not found(param_name:%s)"%parameter)
+                        bot.reply_to(message, "Parameter with such name not found(param_name:%s)" % parameter)
 
                 else:
                     bot.reply_to(message, "Wrong input arguments, please try again "
@@ -222,27 +186,56 @@ def edit_task(message):
         bot.reply_to(message, "Wrong input, no data to change been found.")
 
 
-"""
-def start_tracking(message):
-    
-    # here you need to count time which passed since this message,
-    # after it will come to the live tracking limit, bot must send message to the user
-    # so user can share live location again
-    
-    
-def get_world_news(message):
+@bot.message_handler(content_types=['location'])
+def handle_location(message):
+    pass
 
 
-def get_tech_news(message):
+@bot.edited_message_handler(content_types=['location'])
+def handle_location(message):
+    cid = message.chat.id
+    user = get_user_from_cache(cid)
+    user_latitude = message.location.latitude
+    user_longitude = message.location.longitude
+
+    tasks_list = user.tasks_list
+    for task in tasks_list:
+        task_latitude = task.location_latitude
+        task_longitude = task.location_longitude
+        task_radius = task.radius
+        task_header = task.header
+        task_body = task.body
+
+        if task.location_latitude and task.location_longitude:
+            task_radius_in_degrees = Decimal(task_radius * 0.00001)
+            maximum_latitude_for_task_radius = task_latitude + task_radius_in_degrees
+            minimum_latitude_for_task_radius = task_latitude - task_radius_in_degrees
+            maximum_longitude_for_task_radius = task_longitude + task_radius_in_degrees
+            minimum_longitude_for_task_radius = task_longitude - task_radius_in_degrees
+
+            is_latitude_in_radius = minimum_latitude_for_task_radius < user_latitude < maximum_latitude_for_task_radius
+            is_longitude_in_radius = minimum_longitude_for_task_radius < user_longitude < maximum_longitude_for_task_radius
+            print("user_latitude:", user_latitude, "user_longitude:", user_longitude, "is_latitude_in_radius:",
+                  is_latitude_in_radius, "is_longitude_in_radius:", is_longitude_in_radius)
+            print("minimum_latitude:", minimum_latitude_for_task_radius)
+            print("maximum_latitude:", maximum_latitude_for_task_radius)
+            print("minimum_longitude:", minimum_longitude_for_task_radius)
+            print("maximum_longitude:", maximum_longitude_for_task_radius)
+
+            if is_latitude_in_radius and is_longitude_in_radius:
+                bot.send_message(cid, "%s, you are entered task area:\n%s\n%s"
+                                 % (message.chat.first_name, task_header, task_body))
 
 
-def get_weather_today():
+def get_user_from_cache(chat_id):
+    if chat_id in chat_id_tasks_cache:
+        user = chat_id_tasks_cache[chat_id]
+        return user
+    else:
+        user = user_service.get_user_by_chat_id(chat_id)
+        return user
 
 
-def get_weather_week():
-
-
-"""
 # application entry point
 if __name__ == '__main__':
-    bot.polling(none_stop=True, interval=0)
+    bot.polling()
