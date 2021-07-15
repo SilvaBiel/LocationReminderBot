@@ -12,13 +12,6 @@ import os
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                     level=logging.INFO)
 
-key_filename = "fernet.properties"
-token_filename = "token.properties"
-path = "C:/Users/golub/Documents/ReminderAssistantBot/"
-
-key_path = path + key_filename
-encrypted_token_path = path + token_filename
-
 bot = telebot.TeleBot(os.getenv("REMINDER_BOT_TOKEN"))
 task_service = TaskService()
 user_service = UserService()
@@ -65,14 +58,10 @@ def get_active_tasks(message):
             active_tasks += 1
             result = "#%s\n" % task.id
             result += task.header + "\n" + task.body
-            if task.location_latitude or task.datetime:
-                result += "\n---"
             if task.location_latitude:
                 geo_locator = Nominatim(user_agent="taskReminderBot")
                 location = geo_locator.reverse("%s, %s" % (task.location_latitude, task.location_longitude))
                 result += "\n" + "location: " + str(location) + "\n" + "radius: " + str(task.radius) + " meteres"
-            if task.datetime:
-                result += "\n" + str(task.datetime)
             bot.send_message(cid, result)
 
     if active_tasks == 0:
