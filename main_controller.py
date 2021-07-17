@@ -8,6 +8,9 @@ from model.entity.task import Task
 from geopy.geocoders import Nominatim
 from decimal import Decimal
 import os
+from datetime import datetime, timedelta
+import threading
+import time
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                     level=logging.INFO)
@@ -19,6 +22,7 @@ task_service.bot = bot
 user_temp_cache = dict()
 
 chat_id_tasks_cache = dict()
+chat_id_datetime_cache = dict()
 
 
 @bot.message_handler(commands=["start"])
@@ -177,8 +181,9 @@ def edit_task(message):
 
 @bot.message_handler(content_types=['location'])
 def handle_location(message):
-    pass
-
+    cid = message.chat.id
+    thread = threading.Thread(target=check_last_notification_time, args=[cid, message, bot])
+    thread.start()
 
 @bot.edited_message_handler(content_types=['location'])
 def handle_location(message):
@@ -186,6 +191,7 @@ def handle_location(message):
     user = get_user_from_cache(cid)
     user_latitude = message.location.latitude
     user_longitude = message.location.longitude
+    chat_id_datetime_cache[cid] = datetime.now()
 
     tasks_list = user.tasks_list
     for task in tasks_list:
@@ -195,7 +201,7 @@ def handle_location(message):
         task_header = task.header
         task_body = task.body
 
-        if task.location_latitude and task.location_longitude:
+        if task.notification_happened and task.location_latitude and task.location_longitude:
             task_radius_in_degrees = Decimal(task_radius * 0.00001)
             maximum_latitude_for_task_radius = task_latitude + task_radius_in_degrees
             minimum_latitude_for_task_radius = task_latitude - task_radius_in_degrees
@@ -204,16 +210,27 @@ def handle_location(message):
 
             is_latitude_in_radius = minimum_latitude_for_task_radius < user_latitude < maximum_latitude_for_task_radius
             is_longitude_in_radius = minimum_longitude_for_task_radius < user_longitude < maximum_longitude_for_task_radius
-            print("user_latitude:", user_latitude, "user_longitude:", user_longitude, "is_latitude_in_radius:",
-                  is_latitude_in_radius, "is_longitude_in_radius:", is_longitude_in_radius)
-            print("minimum_latitude:", minimum_latitude_for_task_radius)
-            print("maximum_latitude:", maximum_latitude_for_task_radius)
-            print("minimum_longitude:", minimum_longitude_for_task_radius)
-            print("maximum_longitude:", maximum_longitude_for_task_radius)
 
             if is_latitude_in_radius and is_longitude_in_radius:
                 bot.send_message(cid, "%s, you are entered task area:\n%s\n%s"
                                  % (message.chat.first_name, task_header, task_body))
+                task.notification_happened = True
+                task_service.update_task(task)
+
+
+def check_last_notification_time(chat_id, message, bot_object):
+    continue_loop_flag = True
+    while continue_loop_flag:
+        last_location_share_time = chat_id_datetime_cache[chat_id]
+        now = datetime.now()
+        if (now - last_location_share_time) > timedelta(minutes=5):
+            bot_object.send_message(chat_id, "%s, it looks like live location period is over, "
+                                             "please share your live location for me once again, "
+                                             "to continue monitoring your tasks." % message.chat.first_name)
+            continue_loop_flag = False
+        else:
+            time.sleep(300)
+
 
 
 def get_user_from_cache(chat_id):
