@@ -259,18 +259,18 @@ def refresh_live_location_notifier(chat_id, message, bot_object):
             last_location_share_time = chat_id_cache[chat_id]["last_live_location_share_time"]
         else:
             chat_id_cache[chat_id]["last_live_location_share_time"] = datetime.now()
-            time.sleep(60)
+            time.sleep(300)
             continue
 
         now = datetime.now()
-        if (now - last_location_share_time) > timedelta(minutes=1):
+        if (now - last_location_share_time) > timedelta(minutes=5):
             bot_object.send_message(chat_id, "%s, it looks like live location period is over, "
                                              "please share your live location for me, "
                                              "to continue monitoring your tasks." % message.chat.first_name)
             continue_loop_flag = False
             chat_id_cache[chat_id]["thread"] = False
         else:
-            time.sleep(60)
+            time.sleep(300)
 
 
 def get_user_from_cache(chat_id):
