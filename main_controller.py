@@ -19,10 +19,8 @@ bot = telebot.TeleBot(os.getenv("REMINDER_BOT_TOKEN"))
 task_service = TaskService()
 user_service = UserService()
 task_service.bot = bot
-user_temp_cache = dict()
 
-chat_id_tasks_cache = dict()
-chat_id_datetime_cache = dict()
+chat_id_cache = dict()
 
 
 @bot.message_handler(commands=["start"])
@@ -179,20 +177,25 @@ def edit_task(message):
         bot.reply_to(message, "Wrong input, no data to change been found.")
 
 
-@bot.message_handler(content_types=['location'])
-def handle_location(message):
-    cid = message.chat.id
-    thread = threading.Thread(target=check_last_notification_time, args=[cid, message, bot])
-    thread.start()
-
 @bot.edited_message_handler(content_types=['location'])
-def handle_location(message):
-    cid = message.chat.id
-    user = get_user_from_cache(cid)
+def handle_live_location(message):
+    chat_id = message.chat.id
+    user = get_user_from_cache(chat_id)
+
     user_latitude = message.location.latitude
     user_longitude = message.location.longitude
-    chat_id_datetime_cache[cid] = datetime.now()
 
+    start_new_thread = False
+    if "thread" not in chat_id_cache[chat_id].keys():
+        start_new_thread = True
+    elif not chat_id_cache[chat_id]["thread"]:
+        start_new_thread = True
+
+    if start_new_thread:
+        thread = threading.Thread(target=refresh_live_location_notifier, args=[chat_id, message, bot])
+        thread.start()
+
+    chat_id_cache[chat_id]["last_live_location_share_time"] = datetime.now()
     tasks_list = user.tasks_list
     for task in tasks_list:
         task_latitude = task.location_latitude
@@ -212,33 +215,43 @@ def handle_location(message):
             is_longitude_in_radius = minimum_longitude_for_task_radius < user_longitude < maximum_longitude_for_task_radius
 
             if is_latitude_in_radius and is_longitude_in_radius:
-                bot.send_message(cid, "%s, you are entered task area:\n%s\n%s"
+                bot.send_message(chat_id, "%s, you are entered task area:\n%s\n%s"
                                  % (message.chat.first_name, task_header, task_body))
                 task.notification_happened = True
                 task_service.update_task(task)
 
 
-def check_last_notification_time(chat_id, message, bot_object):
+def refresh_live_location_notifier(chat_id, message, bot_object):
     continue_loop_flag = True
+    chat_id_cache[chat_id]["thread"] = True
     while continue_loop_flag:
-        last_location_share_time = chat_id_datetime_cache[chat_id]
+        if "last_live_location_share_time" in chat_id_cache[chat_id]:
+            last_location_share_time = chat_id_cache[chat_id]["last_live_location_share_time"]
+        else:
+            chat_id_cache[chat_id]["last_live_location_share_time"] = datetime.now()
+            time.sleep(60)
+            continue
+
         now = datetime.now()
-        if (now - last_location_share_time) > timedelta(minutes=5):
+        if (now - last_location_share_time) > timedelta(minutes=1):
             bot_object.send_message(chat_id, "%s, it looks like live location period is over, "
-                                             "please share your live location for me once again, "
+                                             "please share your live location for me, "
                                              "to continue monitoring your tasks." % message.chat.first_name)
             continue_loop_flag = False
+            chat_id_cache[chat_id]["thread"] = False
         else:
-            time.sleep(300)
-
+            time.sleep(60)
 
 
 def get_user_from_cache(chat_id):
-    if chat_id in chat_id_tasks_cache:
-        user = chat_id_tasks_cache[chat_id]
+    if chat_id in chat_id_cache and "user" in chat_id_cache[chat_id]:
+        user = chat_id_cache[chat_id]["user"]
         return user
     else:
+        if chat_id not in chat_id_cache:
+            chat_id_cache[chat_id] = dict()
         user = user_service.get_user_by_chat_id(chat_id)
+        chat_id_cache[chat_id]["user"] = user
         return user
 
 

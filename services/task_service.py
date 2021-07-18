@@ -109,7 +109,6 @@ class TaskService:
             self.bot.register_next_step_handler(msg, self.add_location_to_task)
 
     def check_founded_location_step(self, message):
-        print('checking....')
         cid = message.chat.id
         task = self.chat_id_tasks_cache[cid]
         location = self.geo_locator.reverse("%s, %s" % (task.location_latitude, task.location_longitude))

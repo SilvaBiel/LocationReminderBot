@@ -1,4 +1,4 @@
-from sqlalchemy import Column, String, Integer, Numeric, ForeignKey
+from sqlalchemy import Column, String, Integer, Numeric, ForeignKey, Boolean
 from sqlalchemy.orm import relationship
 from model.entity.base import Base
 from model.entity.user import User
@@ -14,7 +14,7 @@ class Task(Base):
     location_longitude = Column(Numeric)
     radius = Column(Integer)
     state = Column(String)  # state = "active" or "done" string
-    notification_happened = Column(bool)
+    notification_happened = Column(Boolean)
 
     user_id = Column(Integer, ForeignKey('users.id'))
     user = relationship("User", back_populates="tasks_list")
