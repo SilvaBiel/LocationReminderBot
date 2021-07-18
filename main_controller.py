@@ -25,8 +25,11 @@ chat_id_cache = dict()
 
 @bot.message_handler(commands=["start"])
 def command_start_handler(message):
+
     """
-    TODO:description
+    Initial start function, register user in database (based on chat id)
+
+    /help//start - initial function, which register user based on chat id/help/
     """
 
     cid = message.chat.id
@@ -45,8 +48,9 @@ def command_start_handler(message):
 
 @bot.message_handler(commands=["get_active_tasks"])
 def get_active_tasks(message):
+
     """
-    TODO:description
+    Returns all active tasks for current user.
 
     /help//get_active_tasks - returns all active tasks for current user/help/
     """
@@ -72,8 +76,10 @@ def get_active_tasks(message):
 
 @bot.message_handler(commands=["help"])
 def get_help(message):
+
     """
-    TODO:description
+    Returns help descriptions for each available commands, which bot can handle.
+
     /help//help - will show available commands/help/
     """
 
@@ -85,7 +91,10 @@ def get_help(message):
 
 @bot.message_handler(commands=["add_task"])
 def add_task(message):
+
     """
+    Function adds new task for current user.
+
     /help//add_task - will add a new task for you and save it in database/help/
     """
 
@@ -95,7 +104,10 @@ def add_task(message):
 
 @bot.message_handler(commands=["delete_task"])
 def delete_task(message):
+
     """
+    Deletes task, based on id.
+
     /help//delete_task - delete task with id, specified after command,
     separated by space (for example: /delete_task 42)/help/
     """
@@ -113,7 +125,10 @@ def delete_task(message):
 
 @bot.message_handler(commands=["complete_task"])
 def complete_task(message):
+
     """
+    Mark task as completed, based on task id.
+
     /help//complete_task - mark task as completed,
     task id must be specified after command, separated by space
     (for example: /complete_task 42)/help/
@@ -139,7 +154,10 @@ def complete_task(message):
 
 @bot.message_handler(commands=["edit_task"])
 def edit_task(message):
+
     """
+    Edit task by id and task parameters to edit.
+
     /help//edit_task - command will edit task with given id,
     syntax must be like this: /edit_task 34 header=new_header body=new_body,
     so after command goes task id, separated by space, after id
@@ -179,6 +197,12 @@ def edit_task(message):
 
 @bot.edited_message_handler(content_types=['location'])
 def handle_live_location(message):
+
+    """
+    Checks current user location with each user task by task location and radius,
+    if user in radius and coordinates it sends message to user.
+    """
+
     chat_id = message.chat.id
     user = get_user_from_cache(chat_id)
 
@@ -222,6 +246,12 @@ def handle_live_location(message):
 
 
 def refresh_live_location_notifier(chat_id, message, bot_object):
+
+    """
+    if the user's location has stopped arriving and there has been no more than a minute,
+    the function sends a notification to the user that he needs to share his location with the bot again
+    """
+
     continue_loop_flag = True
     chat_id_cache[chat_id]["thread"] = True
     while continue_loop_flag:
@@ -244,6 +274,12 @@ def refresh_live_location_notifier(chat_id, message, bot_object):
 
 
 def get_user_from_cache(chat_id):
+
+    """
+    Returns user from cache, if user not cached,
+    function searches for it in database and adds to cache.
+    """
+
     if chat_id in chat_id_cache and "user" in chat_id_cache[chat_id]:
         user = chat_id_cache[chat_id]["user"]
         return user
@@ -255,6 +291,5 @@ def get_user_from_cache(chat_id):
         return user
 
 
-# application entry point
 if __name__ == '__main__':
     bot.polling()

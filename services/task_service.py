@@ -13,6 +13,11 @@ class TaskService:
     chat_id_tasks_cache = dict()
 
     def add_task_header_step(self, message):
+
+        """
+        New task header creation step.
+        """
+
         cid = message.chat.id
         header = message.text
         self.chat_id_tasks_cache = dict()
@@ -20,11 +25,18 @@ class TaskService:
             msg = self.bot.reply_to(message, "Great, now please enter task body.")
             self.bot.register_next_step_handler(msg, self.add_task_body_step)
             self.chat_id_tasks_cache[cid] = header
+        elif header == "/cancel" or header == "cancel":
+            pass
         else:
             msg = self.bot.reply_to(message, "Header is empty, please provide correct header.")
             self.bot.register_next_step_handler(msg, self.add_task_body_step)
 
     def add_task_body_step(self, message):
+
+        """
+        New task body creation step.
+        """
+
         cid = message.chat.id
         body = message.text
         user = self.user_service.get_user_by_chat_id(cid)
@@ -41,11 +53,18 @@ class TaskService:
             task = Task(header, body, user)
             self.save_task(task)
             self.chat_id_tasks_cache[cid] = task
+        elif body == "/cancel" or body == "cancel":
+            pass
         else:
             msg = self.bot.reply_to(message, "Task body is empty, please provide correct task body.")
             self.bot.register_next_step_handler(msg, self.add_task_body_step)
 
     def add_location_reminder(self, message):
+
+        """
+        Add location reminder to task step 1.
+        """
+
         text = message.text
         cid = message.chat.id
         task = self.chat_id_tasks_cache[cid]
@@ -58,12 +77,18 @@ class TaskService:
                                              "2) or City, Street, Home"
                                              "arguments must be separated by spaces." % message.chat.first_name)
             self.bot.register_next_step_handler(msg, self.add_location_to_task)
-
+        elif text == "/cancel" or text == "cancel":
+            pass
         else:
             msg = self.bot.reply_to(message, "Wrong syntax, try again")
             self.bot.register_next_step_handler(msg, self.add_location_reminder)
 
     def add_location_to_task(self, message):
+
+        """
+        Add location reminder to task step 2.
+        """
+
         location = message.text
         cid = message.chat.id
         task = self.chat_id_tasks_cache[cid]
@@ -85,10 +110,17 @@ class TaskService:
                 msg = self.bot.reply_to(message, "Sorry, specified location was not found, "
                                                  "please check entered address and try again")
                 self.bot.register_next_step_handler(msg, self.add_location_to_task)
+        elif location == "/cancel" or location == "cancel":
+            pass
         else:
             self.bot_location_wrong_syntax(message)
 
     def bot_location_wrong_syntax(self, message):
+
+        """
+        Wrong syntax message during location adding to task.
+        """
+
         self.bot.reply_to(message, "Wrong syntax.")
         msg = self.bot.reply_to(message, "%s please enter desired location reminder for task. "
                                          "You have two options:"
@@ -98,6 +130,11 @@ class TaskService:
         self.bot.register_next_step_handler(msg, self.add_location_to_task)
 
     def finish_location_adding_to_task(self, message):
+
+        """
+        Finishing location adding to task.
+        """
+
         text = message.text
         cid = message.chat.id
         task = self.chat_id_tasks_cache[cid]
@@ -107,8 +144,15 @@ class TaskService:
         elif text == "/no":
             msg = self.bot.reply_to(message, "It look like we have wrong address, let's try it again!")
             self.bot.register_next_step_handler(msg, self.add_location_to_task)
+        elif text == "/cancel" or text == "cancel":
+            pass
 
     def check_founded_location_step(self, message):
+
+        """
+        Returns founded location step, for user to check if it correct.
+        """
+
         cid = message.chat.id
         task = self.chat_id_tasks_cache[cid]
         location = self.geo_locator.reverse("%s, %s" % (task.location_latitude, task.location_longitude))
