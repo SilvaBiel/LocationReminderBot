@@ -12,8 +12,11 @@ from datetime import datetime, timedelta
 import threading
 import time
 
-logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-                    level=logging.INFO)
+current_day = datetime.today().strftime("%d_%m_%y")
+logging.basicConfig(filename='Location_reminder_log%s.log' % current_day,
+                    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+                    level=logging.DEBUG)
+logger = logging.getLogger(__name__)
 
 bot = telebot.TeleBot(os.getenv("REMINDER_BOT_TOKEN"))
 task_service = TaskService()
@@ -44,6 +47,7 @@ def command_start_handler(message):
         user_service.add_user(new_user)
         bot.send_message(cid, "Hello, %s, it\'s nice to meet you!" % message.chat.first_name)
         get_help(message)
+        logger.info("Registered new user.")
 
 
 @bot.message_handler(commands=["get_active_tasks"])
@@ -56,6 +60,7 @@ def get_active_tasks(message):
     """
 
     cid = message.chat.id
+    logger.info("Get active tasks for cid(%s)." % cid)
     user = user_service.get_user_by_chat_id(cid)
     user_tasks = user.tasks_list
     active_tasks = 0
@@ -98,6 +103,7 @@ def add_task(message):
     /help//add_task - will add a new task for you and save it in database/help/
     """
 
+    logger.info("Adding new task.")
     msg = bot.reply_to(message, "Great, let's add a new task!\nPlease enter task header.")
     bot.register_next_step_handler(msg, task_service.add_task_header_step)
 
@@ -118,6 +124,7 @@ def delete_task(message):
     if task_id.isdigit():
         task_service.delete_task_by_id(task_id)
         bot.reply_to(message, "Task has been deleted!")
+        logger.info("Task with id=%s was deleted." % str(task_id))
     else:
         bot.reply_to(message, "Wrong input, no valid task id was found, please try again, "
                               "enter correct task id after command.")
@@ -144,6 +151,7 @@ def complete_task(message):
             task.state = "done"
             task_service.update_task(task)
             bot.reply_to(message, "Task has been marked as completed!")
+            logger.info("Task with id=%s was marked as completed." % str(task_id))
         else:
             bot.reply_to(message, "Task with such is has not been found, please try again.")
 
@@ -179,7 +187,6 @@ def edit_task(message):
                     value = arg.split("=", 1)[1]
                     if hasattr(task, parameter):
                         task.set_attr(parameter, value)
-                        bot.reply_to(message, "Task has been successfully updated!")
                     else:
                         bot.reply_to(message, "Parameter with such name not found(param_name:%s)" % parameter)
 
@@ -187,6 +194,8 @@ def edit_task(message):
                     bot.reply_to(message, "Wrong input arguments, please try again "
                                           "(syntax example: /edit_task #31 header=new_header body=new_body.")
 
+            bot.reply_to(message, "Task has been successfully updated!")
+            logger.info("Task with id=%s was successfully edited." % str(task_id))
             task_service.update_task(task)
         else:
             bot.reply_to(message, "No task id been found, please specify task_id with # before id and try again, "
@@ -243,6 +252,8 @@ def handle_live_location(message):
                                  % (message.chat.first_name, task_header, task_body))
                 task.notification_happened = True
                 task_service.update_task(task)
+                logger.info("User entered to task area, task marked as notification happened, "
+                            "task_id = %s" % str(task.id))
 
 
 def refresh_live_location_notifier(chat_id, message, bot_object):
@@ -269,6 +280,8 @@ def refresh_live_location_notifier(chat_id, message, bot_object):
                                              "to continue monitoring your tasks." % message.chat.first_name)
             continue_loop_flag = False
             chat_id_cache[chat_id]["thread"] = False
+            logger.info("For chat_id=%s live location period was over, message sended." % chat_id)
+
         else:
             time.sleep(300)
 

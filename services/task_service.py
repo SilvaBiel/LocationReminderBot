@@ -3,6 +3,7 @@ import re
 from geopy.geocoders import Nominatim
 from services.user_service import UserService
 from model.entity.task import Task
+from main_controller import logger
 
 
 class TaskService:
@@ -141,6 +142,7 @@ class TaskService:
         if text == "/yes":
             self.task_dao.save_task(task)
             self.bot.reply_to(message, "Fantastic, task was successfully saved.")
+            logger.info("Task was successfully saved(cid=%s)." % cid)
         elif text == "/no":
             msg = self.bot.reply_to(message, "It look like we have wrong address, let's try it again!")
             self.bot.register_next_step_handler(msg, self.add_location_to_task)
@@ -161,15 +163,19 @@ class TaskService:
         self.bot.register_next_step_handler(msg, self.finish_location_adding_to_task)
 
     def get_task_by_id(self, task_id: int) -> Task:
+        logger.info("Returning task with id=%s." % task_id)
         return self.task_dao.get_task_by_id(task_id)
 
     def delete_task_by_id(self, task_id: int):
+        logger.info("Task with id=%s was successfully deleted." % task_id)
         self.task_dao.delete_task_by_id(task_id)
 
     def update_task(self, task: Task):
         if task:
+            logger.info("Task with id=%s was successfully updated." % task.id)
             self.task_dao.save_task(task)
 
     def save_task(self, task: Task):
         if task:
+            logger.info("Task with id=%s was successfully saved." % task.id)
             self.task_dao.save_task(task)
