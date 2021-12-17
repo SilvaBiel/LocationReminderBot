@@ -3,7 +3,7 @@ import re
 from geopy.geocoders import Nominatim
 from services.user_service import UserService
 from model.entity.task import Task
-from main_controller import logger
+from services.logger_service import logger
 
 
 class TaskService:

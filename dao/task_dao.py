@@ -30,13 +30,12 @@ class TaskDao:
     def delete_task_by_id(self, task_id: int) -> bool:
         statement = delete(Task).where(Task.id == task_id)
         result = self.session.execute(statement)
-        print("----result:", result)
 
     def edit_task(self, task: Task):
         self.session.add(task)
         self.session.commit()
 
-    def get_task_by_id(self, task_id:int)->Task:
+    def get_task_by_id(self, task_id: int) -> Task:
         statement = select(Task).where(Task.id == task_id)
         result = self.session.execute(statement)
         tasks = result.scalars().all()

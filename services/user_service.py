@@ -1,8 +1,6 @@
-# TODO: write funcs to get all users, get user, edit user, delete user,
-
 from dao.user_dao import UserDao
 from model.entity.user import User
-from main_controller import logger
+from services.logger_service import logger
 
 
 class UserService:

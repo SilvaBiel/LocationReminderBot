@@ -11,12 +11,8 @@ import os
 from datetime import datetime, timedelta
 import threading
 import time
+from services.logger_service import logger
 
-current_day = datetime.today().strftime("%d_%m_%y")
-logging.basicConfig(filename='Location_reminder_log%s.log' % current_day,
-                    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-                    level=logging.DEBUG)
-logger = logging.getLogger(__name__)
 
 bot = telebot.TeleBot(os.getenv("REMINDER_BOT_TOKEN"))
 task_service = TaskService()
