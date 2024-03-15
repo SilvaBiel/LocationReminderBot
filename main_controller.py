@@ -14,7 +14,7 @@ import time
 from services.logger_service import logger
 
 
-bot = telebot.TeleBot(os.getenv("REMINDER_BOT_TOKEN"))
+bot = telebot.TeleBot("6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw")#os.getenv("REMINDER_BOT_TOKEN"))
 task_service = TaskService()
 user_service = UserService()
 task_service.bot = bot
@@ -213,6 +213,8 @@ def handle_live_location(message):
 
     user_latitude = message.location.latitude
     user_longitude = message.location.longitude
+
+    print("User location: ", user_latitude, user_longitude, message.chat.first_name)
 
     start_new_thread = False
     if "thread" not in chat_id_cache[chat_id].keys():

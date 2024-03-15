@@ -91,6 +91,7 @@ class TaskService:
         """
 
         location = message.text
+        print("LOCATION"+location)
         cid = message.chat.id
         task = self.chat_id_tasks_cache[cid]
         if re.match(r'^(-?\d+(\.\d+)?),\s*(-?\d+(\.\d+)?)$', location):
