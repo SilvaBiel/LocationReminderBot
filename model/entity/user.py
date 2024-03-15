@@ -14,6 +14,7 @@ class User(Base):
 
     geo_request_rate = Column(Integer)
     tasks_list = relationship("Task", back_populates="user")
+    delivery_list = relationship("Delivery", back_populates="user")
 
     def __init__(self, chat_id: str):
         bytes_string_chat_id = str(chat_id).encode()

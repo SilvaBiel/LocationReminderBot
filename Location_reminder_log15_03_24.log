@@ -1,0 +1,858 @@
+2024-03-15 09:56:41,784 - urllib3.util.retry - DEBUG - Converted retries value: 2 -> Retry(total=2, connect=None, read=None, redirect=None, status=None)
+2024-03-15 09:56:41,784 - urllib3.util.retry - DEBUG - Converted retries value: 2 -> Retry(total=2, connect=None, read=None, redirect=None, status=None)
+2024-03-15 09:56:41,788 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2024-03-15 09:56:42,483 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getMe HTTP/1.1" 200 202
+2024-03-15 09:56:42,485 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2024-03-15 09:56:43,357 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 32725
+2024-03-15 10:01:24,438 - urllib3.util.retry - DEBUG - Converted retries value: 2 -> Retry(total=2, connect=None, read=None, redirect=None, status=None)
+2024-03-15 10:01:24,438 - urllib3.util.retry - DEBUG - Converted retries value: 2 -> Retry(total=2, connect=None, read=None, redirect=None, status=None)
+2024-03-15 10:01:24,442 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2024-03-15 10:01:25,108 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getMe HTTP/1.1" 200 202
+2024-03-15 10:01:25,109 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2024-03-15 10:01:32,814 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 256
+2024-03-15 10:01:41,254 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079637&timeout=20 HTTP/1.1" 200 318
+2024-03-15 10:01:41,257 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2024-03-15 10:01:42,034 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/sendChatAction?chat_id=956183581&action=typing HTTP/1.1" 200 25
+2024-03-15 10:01:42,060 - sqlalchemy.engine.Engine - INFO - select pg_catalog.version()
+2024-03-15 10:01:42,060 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2024-03-15 10:01:42,061 - sqlalchemy.engine.Engine - INFO - select current_schema()
+2024-03-15 10:01:42,061 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2024-03-15 10:01:42,061 - sqlalchemy.engine.Engine - INFO - show standard_conforming_strings
+2024-03-15 10:01:42,062 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2024-03-15 10:01:42,062 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-03-15 10:01:42,066 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.hashed_chat_id, users.registration_date, users.geo_request_rate 
+FROM users 
+WHERE users.hashed_chat_id = %(hashed_chat_id_1)s
+2024-03-15 10:01:42,067 - sqlalchemy.engine.Engine - INFO - [generated in 0.00040s] {'hashed_chat_id_1': 'c458cf0a8bc0309ad28d5a51808f1c3c'}
+2024-03-15 10:01:42,421 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "POST /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/sendMessage?chat_id=956183581&text=Ola%2C+Gabriel%2C+a+quanto+tempo%2C+como+posso+te+ajudar%3F HTTP/1.1" 200 280
+2024-03-15 10:01:42,758 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/sendChatAction?chat_id=956183581&action=typing HTTP/1.1" 200 25
+2024-03-15 10:01:43,123 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "POST /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/sendMessage?chat_id=956183581&text=%2Fstart+-+initial+function%2C+which+register+user+based+on+chat+id%0A%0A%2Fget_active_tasks+-+returns+all+active+tasks+for+current+user%0A%0A%2Fhelp+-+will+show+available+commands%0A%0A%2Fadd_task+-+will+add+a+new+task+for+you+and+save+it+in+database%0A%0A%2Fdelete_task+-+delete+task+with+id%2C+specified+after+command%2Cseparated+by+space+%28for+example%3A+%2Fdelete_task+42%29%0A%0A%2Fcomplete_task+-+mark+task+as+completed%2Ctask+id+must+be+specified+after+command%2C+separated+by+space%28for+example%3A+%2Fcomplete_task+42%29%0A%0A%2Fedit_task+-+command+will+edit+task+with+given+id%2Csyntax+must+be+like+this%3A+%2Fedit_task+34+header%3Dnew_header+body%3Dnew_body%2Cso+after+command+goes+task+id%2C+separated+by+space%2C+after+idwill+go+parameters+which+you+want+to+edit+with+parameter+name+equals+valuetask+id+must+be+specified+after+command%2C+separated+by+space%0A%0A HTTP/1.1" 200 1517
+2024-03-15 10:02:01,473 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079638&timeout=20 HTTP/1.1" 200 23
+2024-03-15 10:02:21,691 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079638&timeout=20 HTTP/1.1" 200 23
+2024-03-15 13:07:14,289 - urllib3.util.retry - DEBUG - Converted retries value: 2 -> Retry(total=2, connect=None, read=None, redirect=None, status=None)
+2024-03-15 13:07:14,289 - urllib3.util.retry - DEBUG - Converted retries value: 2 -> Retry(total=2, connect=None, read=None, redirect=None, status=None)
+2024-03-15 13:07:14,293 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2024-03-15 13:07:14,964 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getMe HTTP/1.1" 200 202
+2024-03-15 13:07:14,965 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2024-03-15 13:07:35,628 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2024-03-15 13:07:55,859 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2024-03-15 13:08:16,101 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2024-03-15 13:08:36,328 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2024-03-15 13:08:56,545 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2024-03-15 13:09:16,802 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2024-03-15 13:09:37,022 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2024-03-15 13:09:57,246 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2024-03-15 13:10:17,466 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2024-03-15 13:10:37,691 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2024-03-15 13:10:57,932 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2024-03-15 13:11:18,166 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2024-03-15 13:11:38,389 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2024-03-15 13:11:58,615 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2024-03-15 13:12:18,841 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2024-03-15 13:12:39,060 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2024-03-15 13:12:59,282 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2024-03-15 13:13:19,505 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2024-03-15 13:13:39,727 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2024-03-15 13:13:59,948 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2024-03-15 13:14:20,171 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2024-03-15 13:14:40,391 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2024-03-15 13:14:55,469 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 318
+2024-03-15 13:14:55,471 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2024-03-15 13:14:56,232 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/sendChatAction?chat_id=956183581&action=typing HTTP/1.1" 200 25
+2024-03-15 13:14:56,258 - sqlalchemy.engine.Engine - INFO - select pg_catalog.version()
+2024-03-15 13:14:56,259 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2024-03-15 13:14:56,259 - sqlalchemy.engine.Engine - INFO - select current_schema()
+2024-03-15 13:14:56,259 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2024-03-15 13:14:56,259 - sqlalchemy.engine.Engine - INFO - show standard_conforming_strings
+2024-03-15 13:14:56,260 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2024-03-15 13:14:56,260 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-03-15 13:14:56,264 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.hashed_chat_id, users.registration_date, users.geo_request_rate 
+FROM users 
+WHERE users.hashed_chat_id = %(hashed_chat_id_1)s
+2024-03-15 13:14:56,264 - sqlalchemy.engine.Engine - INFO - [generated in 0.00040s] {'hashed_chat_id_1': 'c458cf0a8bc0309ad28d5a51808f1c3c'}
+2024-03-15 13:14:56,617 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "POST /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/sendMessage?chat_id=956183581&text=Ola%2C+Gabriel%2C+a+quanto+tempo%2C+como+posso+te+ajudar%3F HTTP/1.1" 200 280
+2024-03-15 13:14:56,948 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/sendChatAction?chat_id=956183581&action=typing HTTP/1.1" 200 25
+2024-03-15 13:14:57,309 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "POST /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/sendMessage?chat_id=956183581&text=%2Fstart+-+initial+function%2C+which+register+user+based+on+chat+id%0A%0A%2Fget_active_tasks+-+returns+all+active+tasks+for+current+user%0A%0A%2Fhelp+-+will+show+available+commands%0A%0A%2Fadd_task+-+will+add+a+new+task+for+you+and+save+it+in+database%0A%0A%2Fdelete_task+-+delete+task+with+id%2C+specified+after+command%2Cseparated+by+space+%28for+example%3A+%2Fdelete_task+42%29%0A%0A%2Fcomplete_task+-+mark+task+as+completed%2Ctask+id+must+be+specified+after+command%2C+separated+by+space%28for+example%3A+%2Fcomplete_task+42%29%0A%0A%2Fedit_task+-+command+will+edit+task+with+given+id%2Csyntax+must+be+like+this%3A+%2Fedit_task+34+header%3Dnew_header+body%3Dnew_body%2Cso+after+command+goes+task+id%2C+separated+by+space%2C+after+idwill+go+parameters+which+you+want+to+edit+with+parameter+name+equals+valuetask+id+must+be+specified+after+command%2C+separated+by+space%0A%0A HTTP/1.1" 200 1517
+2024-03-15 13:15:02,522 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079639&timeout=20 HTTP/1.1" 200 321
+2024-03-15 13:15:02,522 - services.logger_service - INFO - Adding new task.
+2024-03-15 13:15:02,524 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2024-03-15 13:15:03,331 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "POST /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/sendMessage?chat_id=956183581&text=%C3%93timo%2C+vamos+adicionar+um+novo+frete%21%0AQual+%C3%A9+o+t%C3%ADtulo+deste+frete%3F.&reply_parameters=%7B%22message_id%22%3A+134%7D HTTP/1.1" 200 595
+2024-03-15 13:15:08,394 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079640&timeout=20 HTTP/1.1" 200 259
+2024-03-15 13:15:08,776 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "POST /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/sendMessage?chat_id=956183581&text=Otimo%2C+agora+uma+descri%C3%A7%C3%A3o+do+frete.&reply_parameters=%7B%22message_id%22%3A+136%7D HTTP/1.1" 200 496
+2024-03-15 13:15:12,109 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079641&timeout=20 HTTP/1.1" 200 262
+2024-03-15 13:15:12,109 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.hashed_chat_id, users.registration_date, users.geo_request_rate 
+FROM users 
+WHERE users.hashed_chat_id = %(hashed_chat_id_1)s
+2024-03-15 13:15:12,111 - sqlalchemy.engine.Engine - INFO - [cached since 15.85s ago] {'hashed_chat_id_1': 'c458cf0a8bc0309ad28d5a51808f1c3c'}
+2024-03-15 13:15:12,462 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "POST /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/sendMessage?chat_id=956183581&text=Fantastico%2C+frete+esta+quase+pronto%2C+%0Apara+adicionar+a+localiza%C3%A7%C3%A3o+de+entrega%2C%0Adigite+%2Flocation%2C+%0Apara+deixar+em+branco%2C+digite+%2Fskip+e+o+frete+ser%C3%A1+criado+como+rascunho.&reply_parameters=%7B%22message_id%22%3A+138%7D HTTP/1.1" 200 747
+2024-03-15 13:15:12,462 - services.logger_service - INFO - Task with id=None was successfully saved.
+2024-03-15 13:15:12,465 - sqlalchemy.engine.Engine - INFO - INSERT INTO tasks (header, body, location_latitude, location_longitude, radius, state, notification_happened, user_id) VALUES (%(header)s, %(body)s, %(location_latitude)s, %(location_longitude)s, %(radius)s, %(state)s, %(notification_happened)s, %(user_id)s) RETURNING tasks.id
+2024-03-15 13:15:12,465 - sqlalchemy.engine.Engine - INFO - [generated in 0.00051s] {'header': 'Teste', 'body': 'Testando', 'location_latitude': None, 'location_longitude': None, 'radius': 1000, 'state': 'active', 'notification_happened': False, 'user_id': 2}
+2024-03-15 13:15:12,472 - sqlalchemy.engine.Engine - INFO - COMMIT
+2024-03-15 13:15:15,698 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079642&timeout=20 HTTP/1.1" 200 321
+2024-03-15 13:15:16,045 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "POST /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/sendMessage?chat_id=956183581&text=Gabriel+por+favor%2C+preencha+a+localiza%C3%A7%C3%A3o+do+frete.+1%29+latitude%2C+longitude2%29+ou+estado%2C+cidade%2C+rua%2C+numerosepare+por+espa%C3%A7o+os+valores.&reply_parameters=%7B%22message_id%22%3A+140%7D HTTP/1.1" 200 663
+2024-03-15 13:15:29,371 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079643&timeout=20 HTTP/1.1" 200 277
+2024-03-15 13:15:29,371 - geopy - DEBUG - Nominatim.geocode: https://nominatim.openstreetmap.org/search?q=-20.1690422+-40.2155435&format=json&limit=1
+2024-03-15 13:15:29,372 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): nominatim.openstreetmap.org:443
+2024-03-15 13:15:30,228 - urllib3.connectionpool - DEBUG - https://nominatim.openstreetmap.org:443 "GET /search?q=-20.1690422+-40.2155435&format=json&limit=1 HTTP/1.1" 200 663
+2024-03-15 13:15:30,229 - geopy - DEBUG - Nominatim.reverse: https://nominatim.openstreetmap.org/reverse?lat=-20.169154832272245&lon=-40.21560217771688&format=json&addressdetails=1
+2024-03-15 13:15:30,717 - urllib3.connectionpool - DEBUG - https://nominatim.openstreetmap.org:443 "GET /reverse?lat=-20.169154832272245&lon=-40.21560217771688&format=json&addressdetails=1 HTTP/1.1" 200 1087
+2024-03-15 13:15:31,068 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "POST /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/sendMessage?chat_id=956183581&text=Por+favor%2C+verifique+se+a+localioza%C3%A7%C3%A3o+esta+correta%3A%0A%0AAvenida+Burle+Marx%2C+Condom%C3%ADnio%2C+Boulevard+Lagoa%2C+Serra%2C+Regi%C3%A3o+Geogr%C3%A1fica+Imediata+de+Vit%C3%B3ria%2C+Regi%C3%A3o+Metropolitana+da+Grande+Vit%C3%B3ria%2C+Regi%C3%A3o+Geogr%C3%A1fica+Intermedi%C3%A1ria+de+Vit%C3%B3ria%2C+Esp%C3%ADrito+Santo%2C+Regi%C3%A3o+Sudeste%2C+29167-300%2C+Brasil+%0A%0A%2Fyes++++%2Fno&reply_parameters=%7B%22message_id%22%3A+142%7D HTTP/1.1" 200 945
+2024-03-15 13:15:33,045 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079644&timeout=20 HTTP/1.1" 200 316
+2024-03-15 13:15:33,045 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-03-15 13:15:33,048 - sqlalchemy.engine.Engine - INFO - SELECT tasks.id AS tasks_id, tasks.header AS tasks_header, tasks.body AS tasks_body, tasks.radius AS tasks_radius, tasks.state AS tasks_state, tasks.notification_happened AS tasks_notification_happened, tasks.user_id AS tasks_user_id 
+FROM tasks 
+WHERE tasks.id = %(pk_1)s
+2024-03-15 13:15:33,049 - sqlalchemy.engine.Engine - INFO - [generated in 0.00056s] {'pk_1': 7}
+2024-03-15 13:15:33,050 - sqlalchemy.engine.Engine - INFO - UPDATE tasks SET location_latitude=%(location_latitude)s, location_longitude=%(location_longitude)s WHERE tasks.id = %(tasks_id)s
+2024-03-15 13:15:33,050 - sqlalchemy.engine.Engine - INFO - [generated in 0.00021s] {'location_latitude': -20.169154832272245, 'location_longitude': -40.21560217771688, 'tasks_id': 7}
+2024-03-15 13:15:33,052 - sqlalchemy.engine.Engine - INFO - COMMIT
+2024-03-15 13:15:33,415 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "POST /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/sendMessage?chat_id=956183581&text=Fantastico%2C+frete+criado+com+sucesso.&reply_parameters=%7B%22message_id%22%3A+144%7D HTTP/1.1" 200 544
+2024-03-15 13:15:33,416 - services.logger_service - INFO - Task was successfully saved(cid=956183581).
+2024-03-15 13:15:43,844 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079645&timeout=20 HTTP/1.1" 200 320
+2024-03-15 13:16:04,069 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079646&timeout=20 HTTP/1.1" 200 23
+2024-03-15 13:16:20,802 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079646&timeout=20 HTTP/1.1" 200 381
+2024-03-15 13:16:20,803 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-03-15 13:16:20,803 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.hashed_chat_id, users.registration_date, users.geo_request_rate 
+FROM users 
+WHERE users.hashed_chat_id = %(hashed_chat_id_1)s
+2024-03-15 13:16:20,804 - sqlalchemy.engine.Engine - INFO - [cached since 84.54s ago] {'hashed_chat_id_1': 'c458cf0a8bc0309ad28d5a51808f1c3c'}
+2024-03-15 13:16:20,805 - sqlalchemy.engine.Engine - INFO - SELECT tasks.id AS tasks_id, tasks.header AS tasks_header, tasks.body AS tasks_body, tasks.location_latitude AS tasks_location_latitude, tasks.location_longitude AS tasks_location_longitude, tasks.radius AS tasks_radius, tasks.state AS tasks_state, tasks.notification_happened AS tasks_notification_happened, tasks.user_id AS tasks_user_id 
+FROM tasks 
+WHERE %(param_1)s = tasks.user_id
+2024-03-15 13:16:20,806 - sqlalchemy.engine.Engine - INFO - [generated in 0.00038s] {'param_1': 2}
+2024-03-15 13:16:41,019 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079647&timeout=20 HTTP/1.1" 200 23
+2024-03-15 13:16:51,644 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079647&timeout=20 HTTP/1.1" 200 381
+2024-03-15 13:17:11,903 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079648&timeout=20 HTTP/1.1" 200 23
+2024-03-15 13:17:22,158 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079648&timeout=20 HTTP/1.1" 200 382
+2024-03-15 13:17:22,160 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2024-03-15 13:17:42,851 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079649&timeout=20 HTTP/1.1" 200 23
+2024-03-15 13:17:53,032 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079649&timeout=20 HTTP/1.1" 200 396
+2024-03-15 13:18:13,260 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079650&timeout=20 HTTP/1.1" 200 23
+2024-03-15 13:18:23,188 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079650&timeout=20 HTTP/1.1" 200 396
+2024-03-15 13:18:43,437 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079651&timeout=20 HTTP/1.1" 200 23
+2024-03-15 13:18:54,019 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079651&timeout=20 HTTP/1.1" 200 395
+2024-03-15 13:19:14,260 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079652&timeout=20 HTTP/1.1" 200 23
+2024-03-15 13:19:24,699 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079652&timeout=20 HTTP/1.1" 200 394
+2024-03-15 13:19:39,834 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079653&timeout=20 HTTP/1.1" 200 363
+2024-03-15 13:20:00,158 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079654&timeout=20 HTTP/1.1" 200 23
+2024-03-15 13:20:20,416 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079654&timeout=20 HTTP/1.1" 200 23
+2024-03-15 13:20:40,674 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079654&timeout=20 HTTP/1.1" 200 23
+2024-03-15 13:21:00,931 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079654&timeout=20 HTTP/1.1" 200 23
+2024-03-15 13:21:21,187 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079654&timeout=20 HTTP/1.1" 200 23
+2024-03-15 13:21:41,424 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079654&timeout=20 HTTP/1.1" 200 23
+2024-03-15 13:22:01,655 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079654&timeout=20 HTTP/1.1" 200 23
+2024-03-15 13:22:21,902 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079654&timeout=20 HTTP/1.1" 200 23
+2024-03-15 13:22:42,131 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079654&timeout=20 HTTP/1.1" 200 23
+2024-03-15 13:23:02,355 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079654&timeout=20 HTTP/1.1" 200 23
+2024-03-15 13:23:22,614 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079654&timeout=20 HTTP/1.1" 200 23
+2024-03-15 13:23:42,862 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079654&timeout=20 HTTP/1.1" 200 23
+2024-03-15 13:24:03,145 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079654&timeout=20 HTTP/1.1" 200 23
+2024-03-15 13:24:23,403 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079654&timeout=20 HTTP/1.1" 200 23
+2024-03-15 13:46:57,859 - urllib3.util.retry - DEBUG - Converted retries value: 2 -> Retry(total=2, connect=None, read=None, redirect=None, status=None)
+2024-03-15 13:46:57,859 - urllib3.util.retry - DEBUG - Converted retries value: 2 -> Retry(total=2, connect=None, read=None, redirect=None, status=None)
+2024-03-15 13:46:57,863 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2024-03-15 13:46:58,529 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getMe HTTP/1.1" 200 202
+2024-03-15 13:46:58,530 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2024-03-15 13:47:08,706 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 318
+2024-03-15 13:47:08,708 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2024-03-15 13:47:09,487 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/sendChatAction?chat_id=956183581&action=typing HTTP/1.1" 200 25
+2024-03-15 13:47:09,513 - sqlalchemy.engine.Engine - INFO - select pg_catalog.version()
+2024-03-15 13:47:09,513 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2024-03-15 13:47:09,514 - sqlalchemy.engine.Engine - INFO - select current_schema()
+2024-03-15 13:47:09,514 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2024-03-15 13:47:09,515 - sqlalchemy.engine.Engine - INFO - show standard_conforming_strings
+2024-03-15 13:47:09,515 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2024-03-15 13:47:09,515 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-03-15 13:47:09,519 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.hashed_chat_id, users.registration_date, users.geo_request_rate 
+FROM users 
+WHERE users.hashed_chat_id = %(hashed_chat_id_1)s
+2024-03-15 13:47:09,519 - sqlalchemy.engine.Engine - INFO - [generated in 0.00036s] {'hashed_chat_id_1': 'c458cf0a8bc0309ad28d5a51808f1c3c'}
+2024-03-15 13:47:09,864 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "POST /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/sendMessage?chat_id=956183581&text=Ola%2C+Gabriel%2C+a+quanto+tempo%2C+como+posso+te+ajudar%3F HTTP/1.1" 200 280
+2024-03-15 13:47:10,198 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/sendChatAction?chat_id=956183581&action=typing HTTP/1.1" 200 25
+2024-03-15 13:47:10,628 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "POST /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/sendMessage?chat_id=956183581&text=%2Fstart+-+initial+function%2C+which+register+user+based+on+chat+id%0A%0A%2Fget_active_tasks+-+returns+all+active+tasks+for+current+user%0A%0A%2Fhelp+-+will+show+available+commands%0A%0A%2Fadd_task+-+will+add+a+new+task+for+you+and+save+it+in+database%0A%0A%2Fdelete_task+-+delete+task+with+id%2C+specified+after+command%2Cseparated+by+space+%28for+example%3A+%2Fdelete_task+42%29%0A%0A%2Fcomplete_task+-+mark+task+as+completed%2Ctask+id+must+be+specified+after+command%2C+separated+by+space%28for+example%3A+%2Fcomplete_task+42%29%0A%0A%2Fedit_task+-+command+will+edit+task+with+given+id%2Csyntax+must+be+like+this%3A+%2Fedit_task+34+header%3Dnew_header+body%3Dnew_body%2Cso+after+command+goes+task+id%2C+separated+by+space%2C+after+idwill+go+parameters+which+you+want+to+edit+with+parameter+name+equals+valuetask+id+must+be+specified+after+command%2C+separated+by+space%0A%0A HTTP/1.1" 200 1517
+2024-03-15 13:47:14,366 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079655&timeout=20 HTTP/1.1" 200 330
+2024-03-15 13:47:14,366 - services.logger_service - INFO - Get active tasks for cid(956183581).
+2024-03-15 13:47:14,367 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.hashed_chat_id, users.registration_date, users.geo_request_rate 
+FROM users 
+WHERE users.hashed_chat_id = %(hashed_chat_id_1)s
+2024-03-15 13:47:14,367 - sqlalchemy.engine.Engine - INFO - [cached since 4.848s ago] {'hashed_chat_id_1': 'c458cf0a8bc0309ad28d5a51808f1c3c'}
+2024-03-15 13:47:14,370 - sqlalchemy.engine.Engine - INFO - SELECT tasks.id AS tasks_id, tasks.header AS tasks_header, tasks.body AS tasks_body, tasks.location_latitude AS tasks_location_latitude, tasks.location_longitude AS tasks_location_longitude, tasks.radius AS tasks_radius, tasks.state AS tasks_state, tasks.notification_happened AS tasks_notification_happened, tasks.user_id AS tasks_user_id 
+FROM tasks 
+WHERE %(param_1)s = tasks.user_id
+2024-03-15 13:47:14,370 - sqlalchemy.engine.Engine - INFO - [generated in 0.00042s] {'param_1': 2}
+2024-03-15 13:47:14,378 - urllib3.util.retry - DEBUG - Converted retries value: 2 -> Retry(total=2, connect=None, read=None, redirect=None, status=None)
+2024-03-15 13:47:14,378 - urllib3.util.retry - DEBUG - Converted retries value: 2 -> Retry(total=2, connect=None, read=None, redirect=None, status=None)
+2024-03-15 13:47:14,378 - geopy - DEBUG - Nominatim.reverse: https://nominatim.openstreetmap.org/reverse?lat=-20.1747332&lon=-40.20634577412598&format=json&addressdetails=1
+2024-03-15 13:47:14,378 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): nominatim.openstreetmap.org:443
+2024-03-15 13:47:15,290 - urllib3.connectionpool - DEBUG - https://nominatim.openstreetmap.org:443 "GET /reverse?lat=-20.1747332&lon=-40.20634577412598&format=json&addressdetails=1 HTTP/1.1" 200 1039
+2024-03-15 13:47:15,291 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2024-03-15 13:47:16,091 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "POST /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/sendMessage?chat_id=956183581&text=%232%0AComprar+limao+sabor+laranja%0AComprar+amanha%0Alocation%3A+Rua+Flor+de+Cerejeira%2C+Feu+Rosa%2C+Serra%2C+Regi%C3%A3o+Geogr%C3%A1fica+Imediata+de+Vit%C3%B3ria%2C+Regi%C3%A3o+Metropolitana+da+Grande+Vit%C3%B3ria%2C+Regi%C3%A3o+Geogr%C3%A1fica+Intermedi%C3%A1ria+de+Vit%C3%B3ria%2C+Esp%C3%ADrito+Santo%2C+Regi%C3%A3o+Sudeste%2C+29172-070%2C+Brasil%0Aradius%3A+1000+meteres HTTP/1.1" 200 577
+2024-03-15 13:47:16,449 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "POST /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/sendMessage?chat_id=956183581&text=%234%0ATeste+location%0ALocation HTTP/1.1" 200 257
+2024-03-15 13:47:16,456 - urllib3.util.retry - DEBUG - Converted retries value: 2 -> Retry(total=2, connect=None, read=None, redirect=None, status=None)
+2024-03-15 13:47:16,456 - urllib3.util.retry - DEBUG - Converted retries value: 2 -> Retry(total=2, connect=None, read=None, redirect=None, status=None)
+2024-03-15 13:47:16,456 - geopy - DEBUG - Nominatim.reverse: https://nominatim.openstreetmap.org/reverse?lat=-20.169154832272245&lon=-40.21560217771688&format=json&addressdetails=1
+2024-03-15 13:47:16,457 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): nominatim.openstreetmap.org:443
+2024-03-15 13:47:17,097 - urllib3.connectionpool - DEBUG - https://nominatim.openstreetmap.org:443 "GET /reverse?lat=-20.169154832272245&lon=-40.21560217771688&format=json&addressdetails=1 HTTP/1.1" 200 1088
+2024-03-15 13:47:17,467 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "POST /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/sendMessage?chat_id=956183581&text=%236%0ASkdjjahda%0AJsjdjs%0Alocation%3A+Avenida+Burle+Marx%2C+Condom%C3%ADnio%2C+Boulevard+Lagoa%2C+Serra%2C+Regi%C3%A3o+Geogr%C3%A1fica+Imediata+de+Vit%C3%B3ria%2C+Regi%C3%A3o+Metropolitana+da+Grande+Vit%C3%B3ria%2C+Regi%C3%A3o+Geogr%C3%A1fica+Intermedi%C3%A1ria+de+Vit%C3%B3ria%2C+Esp%C3%ADrito+Santo%2C+Regi%C3%A3o+Sudeste%2C+29167-300%2C+Brasil%0Aradius%3A+1000+meteres HTTP/1.1" 200 572
+2024-03-15 13:47:17,473 - urllib3.util.retry - DEBUG - Converted retries value: 2 -> Retry(total=2, connect=None, read=None, redirect=None, status=None)
+2024-03-15 13:47:17,474 - urllib3.util.retry - DEBUG - Converted retries value: 2 -> Retry(total=2, connect=None, read=None, redirect=None, status=None)
+2024-03-15 13:47:17,474 - geopy - DEBUG - Nominatim.reverse: https://nominatim.openstreetmap.org/reverse?lat=-20.169154832272245&lon=-40.21560217771688&format=json&addressdetails=1
+2024-03-15 13:47:17,475 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): nominatim.openstreetmap.org:443
+2024-03-15 13:47:18,126 - urllib3.connectionpool - DEBUG - https://nominatim.openstreetmap.org:443 "GET /reverse?lat=-20.169154832272245&lon=-40.21560217771688&format=json&addressdetails=1 HTTP/1.1" 200 1088
+2024-03-15 13:47:18,485 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "POST /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/sendMessage?chat_id=956183581&text=%237%0ATeste%0ATestando%0Alocation%3A+Avenida+Burle+Marx%2C+Condom%C3%ADnio%2C+Boulevard+Lagoa%2C+Serra%2C+Regi%C3%A3o+Geogr%C3%A1fica+Imediata+de+Vit%C3%B3ria%2C+Regi%C3%A3o+Metropolitana+da+Grande+Vit%C3%B3ria%2C+Regi%C3%A3o+Geogr%C3%A1fica+Intermedi%C3%A1ria+de+Vit%C3%B3ria%2C+Esp%C3%ADrito+Santo%2C+Regi%C3%A3o+Sudeste%2C+29167-300%2C+Brasil%0Aradius%3A+1000+meteres HTTP/1.1" 200 570
+2024-03-15 13:47:34,589 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079656&timeout=20 HTTP/1.1" 200 23
+2024-03-15 13:47:43,613 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079656&timeout=20 HTTP/1.1" 200 302
+2024-03-15 13:48:03,831 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079657&timeout=20 HTTP/1.1" 200 23
+2024-03-15 13:48:06,089 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079657&timeout=20 HTTP/1.1" 200 320
+2024-03-15 13:48:26,307 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079658&timeout=20 HTTP/1.1" 200 23
+2024-03-15 13:48:42,867 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079658&timeout=20 HTTP/1.1" 200 381
+2024-03-15 13:48:42,868 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.hashed_chat_id, users.registration_date, users.geo_request_rate 
+FROM users 
+WHERE users.hashed_chat_id = %(hashed_chat_id_1)s
+2024-03-15 13:48:42,869 - sqlalchemy.engine.Engine - INFO - [cached since 93.35s ago] {'hashed_chat_id_1': 'c458cf0a8bc0309ad28d5a51808f1c3c'}
+2024-03-15 13:48:42,870 - sqlalchemy.engine.Engine - INFO - SELECT tasks.id AS tasks_id, tasks.header AS tasks_header, tasks.body AS tasks_body, tasks.location_latitude AS tasks_location_latitude, tasks.location_longitude AS tasks_location_longitude, tasks.radius AS tasks_radius, tasks.state AS tasks_state, tasks.notification_happened AS tasks_notification_happened, tasks.user_id AS tasks_user_id 
+FROM tasks 
+WHERE %(param_1)s = tasks.user_id
+2024-03-15 13:48:42,870 - sqlalchemy.engine.Engine - INFO - [cached since 88.5s ago] {'param_1': 2}
+2024-03-15 13:49:03,087 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079659&timeout=20 HTTP/1.1" 200 23
+2024-03-15 13:49:23,305 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079659&timeout=20 HTTP/1.1" 200 23
+2024-03-15 13:49:43,521 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079659&timeout=20 HTTP/1.1" 200 23
+2024-03-15 13:49:44,272 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079659&timeout=20 HTTP/1.1" 200 382
+2024-03-15 13:50:04,502 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079660&timeout=20 HTTP/1.1" 200 23
+2024-03-15 13:50:15,090 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079660&timeout=20 HTTP/1.1" 200 396
+2024-03-15 13:50:25,368 - urllib3.util.retry - DEBUG - Converted retries value: 2 -> Retry(total=2, connect=None, read=None, redirect=None, status=None)
+2024-03-15 13:50:25,369 - urllib3.util.retry - DEBUG - Converted retries value: 2 -> Retry(total=2, connect=None, read=None, redirect=None, status=None)
+2024-03-15 13:50:25,373 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2024-03-15 13:50:26,077 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getMe HTTP/1.1" 200 202
+2024-03-15 13:50:26,078 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2024-03-15 13:50:33,012 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 396
+2024-03-15 13:50:33,038 - sqlalchemy.engine.Engine - INFO - select pg_catalog.version()
+2024-03-15 13:50:33,039 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2024-03-15 13:50:33,040 - sqlalchemy.engine.Engine - INFO - select current_schema()
+2024-03-15 13:50:33,040 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2024-03-15 13:50:33,040 - sqlalchemy.engine.Engine - INFO - show standard_conforming_strings
+2024-03-15 13:50:33,040 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2024-03-15 13:50:33,041 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-03-15 13:50:33,045 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.hashed_chat_id, users.registration_date, users.geo_request_rate 
+FROM users 
+WHERE users.hashed_chat_id = %(hashed_chat_id_1)s
+2024-03-15 13:50:33,045 - sqlalchemy.engine.Engine - INFO - [generated in 0.00038s] {'hashed_chat_id_1': 'c458cf0a8bc0309ad28d5a51808f1c3c'}
+2024-03-15 13:50:33,049 - sqlalchemy.engine.Engine - INFO - SELECT tasks.id AS tasks_id, tasks.header AS tasks_header, tasks.body AS tasks_body, tasks.location_latitude AS tasks_location_latitude, tasks.location_longitude AS tasks_location_longitude, tasks.radius AS tasks_radius, tasks.state AS tasks_state, tasks.notification_happened AS tasks_notification_happened, tasks.user_id AS tasks_user_id 
+FROM tasks 
+WHERE %(param_1)s = tasks.user_id
+2024-03-15 13:50:33,049 - sqlalchemy.engine.Engine - INFO - [generated in 0.00049s] {'param_1': 2}
+2024-03-15 13:50:34,456 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079662&timeout=20 HTTP/1.1" 200 364
+2024-03-15 13:50:41,330 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079663&timeout=20 HTTP/1.1" 200 318
+2024-03-15 13:50:41,332 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2024-03-15 13:50:42,127 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/sendChatAction?chat_id=956183581&action=typing HTTP/1.1" 200 25
+2024-03-15 13:50:42,128 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.hashed_chat_id, users.registration_date, users.geo_request_rate 
+FROM users 
+WHERE users.hashed_chat_id = %(hashed_chat_id_1)s
+2024-03-15 13:50:42,128 - sqlalchemy.engine.Engine - INFO - [cached since 9.083s ago] {'hashed_chat_id_1': 'c458cf0a8bc0309ad28d5a51808f1c3c'}
+2024-03-15 13:50:42,492 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "POST /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/sendMessage?chat_id=956183581&text=Ola%2C+Gabriel%2C+a+quanto+tempo%2C+como+posso+te+ajudar%3F HTTP/1.1" 200 280
+2024-03-15 13:50:42,849 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/sendChatAction?chat_id=956183581&action=typing HTTP/1.1" 200 25
+2024-03-15 13:50:43,210 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "POST /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/sendMessage?chat_id=956183581&text=%2Fstart+-+initial+function%2C+which+register+user+based+on+chat+id%0A%0A%2Fget_active_tasks+-+returns+all+active+tasks+for+current+user%0A%0A%2Fhelp+-+will+show+available+commands%0A%0A%2Fadd_task+-+will+add+a+new+task+for+you+and+save+it+in+database%0A%0A%2Fdelete_task+-+delete+task+with+id%2C+specified+after+command%2Cseparated+by+space+%28for+example%3A+%2Fdelete_task+42%29%0A%0A%2Fcomplete_task+-+mark+task+as+completed%2Ctask+id+must+be+specified+after+command%2C+separated+by+space%28for+example%3A+%2Fcomplete_task+42%29%0A%0A%2Fedit_task+-+command+will+edit+task+with+given+id%2Csyntax+must+be+like+this%3A+%2Fedit_task+34+header%3Dnew_header+body%3Dnew_body%2Cso+after+command+goes+task+id%2C+separated+by+space%2C+after+idwill+go+parameters+which+you+want+to+edit+with+parameter+name+equals+valuetask+id+must+be+specified+after+command%2C+separated+by+space%0A%0A HTTP/1.1" 200 1517
+2024-03-15 13:51:01,547 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079664&timeout=20 HTTP/1.1" 200 23
+2024-03-15 13:51:09,266 - urllib3.util.retry - DEBUG - Converted retries value: 2 -> Retry(total=2, connect=None, read=None, redirect=None, status=None)
+2024-03-15 13:51:09,266 - urllib3.util.retry - DEBUG - Converted retries value: 2 -> Retry(total=2, connect=None, read=None, redirect=None, status=None)
+2024-03-15 13:51:09,270 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2024-03-15 13:51:09,938 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getMe HTTP/1.1" 200 202
+2024-03-15 13:51:09,940 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2024-03-15 13:51:30,576 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 23
+2024-03-15 13:51:37,166 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 318
+2024-03-15 13:51:37,167 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2024-03-15 13:51:37,949 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/sendChatAction?chat_id=956183581&action=typing HTTP/1.1" 200 25
+2024-03-15 13:51:37,974 - sqlalchemy.engine.Engine - INFO - select pg_catalog.version()
+2024-03-15 13:51:37,974 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2024-03-15 13:51:37,975 - sqlalchemy.engine.Engine - INFO - select current_schema()
+2024-03-15 13:51:37,975 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2024-03-15 13:51:37,975 - sqlalchemy.engine.Engine - INFO - show standard_conforming_strings
+2024-03-15 13:51:37,976 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2024-03-15 13:51:37,976 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-03-15 13:51:37,980 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.hashed_chat_id, users.registration_date, users.geo_request_rate 
+FROM users 
+WHERE users.hashed_chat_id = %(hashed_chat_id_1)s
+2024-03-15 13:51:37,980 - sqlalchemy.engine.Engine - INFO - [generated in 0.00037s] {'hashed_chat_id_1': 'c458cf0a8bc0309ad28d5a51808f1c3c'}
+2024-03-15 13:51:38,382 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "POST /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/sendMessage?chat_id=956183581&text=Ola%2C+Gabriel%2C+a+quanto+tempo%2C+como+posso+te+ajudar%3F HTTP/1.1" 200 280
+2024-03-15 13:51:38,720 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/sendChatAction?chat_id=956183581&action=typing HTTP/1.1" 200 25
+2024-03-15 13:51:39,098 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "POST /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/sendMessage?chat_id=956183581&text=%2Fstart+-+initial+function%2C+which+register+user+based+on+chat+id%0A%0A%2Fget_active_tasks+-+returns+all+active+tasks+for+current+user%0A%0A%2Fhelp+-+will+show+available+commands%0A%0A%2Fadd_task+-+will+add+a+new+task+for+you+and+save+it+in+database%0A%0A%2Fdelete_task+-+delete+task+with+id%2C+specified+after+command%2Cseparated+by+space+%28for+example%3A+%2Fdelete_task+42%29%0A%0A%2Fcomplete_task+-+mark+task+as+completed%2Ctask+id+must+be+specified+after+command%2C+separated+by+space%28for+example%3A+%2Fcomplete_task+42%29%0A%0A%2Fedit_task+-+command+will+edit+task+with+given+id%2Csyntax+must+be+like+this%3A+%2Fedit_task+34+header%3Dnew_header+body%3Dnew_body%2Cso+after+command+goes+task+id%2C+separated+by+space%2C+after+idwill+go+parameters+which+you+want+to+edit+with+parameter+name+equals+valuetask+id+must+be+specified+after+command%2C+separated+by+space%0A%0A HTTP/1.1" 200 1517
+2024-03-15 13:51:45,932 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079665&timeout=20 HTTP/1.1" 200 330
+2024-03-15 13:51:45,932 - services.logger_service - INFO - Get active tasks for cid(956183581).
+2024-03-15 13:51:45,933 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.hashed_chat_id, users.registration_date, users.geo_request_rate 
+FROM users 
+WHERE users.hashed_chat_id = %(hashed_chat_id_1)s
+2024-03-15 13:51:45,933 - sqlalchemy.engine.Engine - INFO - [cached since 7.954s ago] {'hashed_chat_id_1': 'c458cf0a8bc0309ad28d5a51808f1c3c'}
+2024-03-15 13:51:45,936 - sqlalchemy.engine.Engine - INFO - SELECT tasks.id AS tasks_id, tasks.header AS tasks_header, tasks.body AS tasks_body, tasks.location_latitude AS tasks_location_latitude, tasks.location_longitude AS tasks_location_longitude, tasks.radius AS tasks_radius, tasks.state AS tasks_state, tasks.notification_happened AS tasks_notification_happened, tasks.user_id AS tasks_user_id 
+FROM tasks 
+WHERE %(param_1)s = tasks.user_id
+2024-03-15 13:51:45,936 - sqlalchemy.engine.Engine - INFO - [generated in 0.00044s] {'param_1': 2}
+2024-03-15 13:51:45,944 - urllib3.util.retry - DEBUG - Converted retries value: 2 -> Retry(total=2, connect=None, read=None, redirect=None, status=None)
+2024-03-15 13:51:45,944 - urllib3.util.retry - DEBUG - Converted retries value: 2 -> Retry(total=2, connect=None, read=None, redirect=None, status=None)
+2024-03-15 13:51:45,944 - geopy - DEBUG - Nominatim.reverse: https://nominatim.openstreetmap.org/reverse?lat=-20.1747332&lon=-40.20634577412598&format=json&addressdetails=1
+2024-03-15 13:51:45,944 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): nominatim.openstreetmap.org:443
+2024-03-15 13:51:46,594 - urllib3.connectionpool - DEBUG - https://nominatim.openstreetmap.org:443 "GET /reverse?lat=-20.1747332&lon=-40.20634577412598&format=json&addressdetails=1 HTTP/1.1" 200 1039
+2024-03-15 13:51:46,595 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2024-03-15 13:51:47,377 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "POST /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/sendMessage?chat_id=956183581&text=%232%0AComprar+limao+sabor+laranja%0AComprar+amanha%0Alocation%3A+Rua+Flor+de+Cerejeira%2C+Feu+Rosa%2C+Serra%2C+Regi%C3%A3o+Geogr%C3%A1fica+Imediata+de+Vit%C3%B3ria%2C+Regi%C3%A3o+Metropolitana+da+Grande+Vit%C3%B3ria%2C+Regi%C3%A3o+Geogr%C3%A1fica+Intermedi%C3%A1ria+de+Vit%C3%B3ria%2C+Esp%C3%ADrito+Santo%2C+Regi%C3%A3o+Sudeste%2C+29172-070%2C+Brasil%0Aradius%3A+1000+meteres HTTP/1.1" 200 577
+2024-03-15 13:51:47,782 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "POST /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/sendMessage?chat_id=956183581&text=%234%0ATeste+location%0ALocation HTTP/1.1" 200 257
+2024-03-15 13:51:47,788 - urllib3.util.retry - DEBUG - Converted retries value: 2 -> Retry(total=2, connect=None, read=None, redirect=None, status=None)
+2024-03-15 13:51:47,788 - urllib3.util.retry - DEBUG - Converted retries value: 2 -> Retry(total=2, connect=None, read=None, redirect=None, status=None)
+2024-03-15 13:51:47,789 - geopy - DEBUG - Nominatim.reverse: https://nominatim.openstreetmap.org/reverse?lat=-20.169154832272245&lon=-40.21560217771688&format=json&addressdetails=1
+2024-03-15 13:51:47,789 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): nominatim.openstreetmap.org:443
+2024-03-15 13:51:48,440 - urllib3.connectionpool - DEBUG - https://nominatim.openstreetmap.org:443 "GET /reverse?lat=-20.169154832272245&lon=-40.21560217771688&format=json&addressdetails=1 HTTP/1.1" 200 1088
+2024-03-15 13:51:48,784 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "POST /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/sendMessage?chat_id=956183581&text=%236%0ASkdjjahda%0AJsjdjs%0Alocation%3A+Avenida+Burle+Marx%2C+Condom%C3%ADnio%2C+Boulevard+Lagoa%2C+Serra%2C+Regi%C3%A3o+Geogr%C3%A1fica+Imediata+de+Vit%C3%B3ria%2C+Regi%C3%A3o+Metropolitana+da+Grande+Vit%C3%B3ria%2C+Regi%C3%A3o+Geogr%C3%A1fica+Intermedi%C3%A1ria+de+Vit%C3%B3ria%2C+Esp%C3%ADrito+Santo%2C+Regi%C3%A3o+Sudeste%2C+29167-300%2C+Brasil%0Aradius%3A+1000+meteres HTTP/1.1" 200 572
+2024-03-15 13:51:48,789 - urllib3.util.retry - DEBUG - Converted retries value: 2 -> Retry(total=2, connect=None, read=None, redirect=None, status=None)
+2024-03-15 13:51:48,789 - urllib3.util.retry - DEBUG - Converted retries value: 2 -> Retry(total=2, connect=None, read=None, redirect=None, status=None)
+2024-03-15 13:51:48,790 - geopy - DEBUG - Nominatim.reverse: https://nominatim.openstreetmap.org/reverse?lat=-20.169154832272245&lon=-40.21560217771688&format=json&addressdetails=1
+2024-03-15 13:51:48,790 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): nominatim.openstreetmap.org:443
+2024-03-15 13:51:49,423 - urllib3.connectionpool - DEBUG - https://nominatim.openstreetmap.org:443 "GET /reverse?lat=-20.169154832272245&lon=-40.21560217771688&format=json&addressdetails=1 HTTP/1.1" 200 1088
+2024-03-15 13:51:49,770 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "POST /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/sendMessage?chat_id=956183581&text=%237%0ATeste%0ATestando%0Alocation%3A+Avenida+Burle+Marx%2C+Condom%C3%ADnio%2C+Boulevard+Lagoa%2C+Serra%2C+Regi%C3%A3o+Geogr%C3%A1fica+Imediata+de+Vit%C3%B3ria%2C+Regi%C3%A3o+Metropolitana+da+Grande+Vit%C3%B3ria%2C+Regi%C3%A3o+Geogr%C3%A1fica+Intermedi%C3%A1ria+de+Vit%C3%B3ria%2C+Esp%C3%ADrito+Santo%2C+Regi%C3%A3o+Sudeste%2C+29167-300%2C+Brasil%0Aradius%3A+1000+meteres HTTP/1.1" 200 570
+2024-03-15 13:52:01,729 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079666&timeout=20 HTTP/1.1" 200 320
+2024-03-15 13:52:07,620 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079667&timeout=20 HTTP/1.1" 200 395
+2024-03-15 13:52:07,620 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.hashed_chat_id, users.registration_date, users.geo_request_rate 
+FROM users 
+WHERE users.hashed_chat_id = %(hashed_chat_id_1)s
+2024-03-15 13:52:07,621 - sqlalchemy.engine.Engine - INFO - [cached since 29.64s ago] {'hashed_chat_id_1': 'c458cf0a8bc0309ad28d5a51808f1c3c'}
+2024-03-15 13:52:07,622 - sqlalchemy.engine.Engine - INFO - SELECT tasks.id AS tasks_id, tasks.header AS tasks_header, tasks.body AS tasks_body, tasks.location_latitude AS tasks_location_latitude, tasks.location_longitude AS tasks_location_longitude, tasks.radius AS tasks_radius, tasks.state AS tasks_state, tasks.notification_happened AS tasks_notification_happened, tasks.user_id AS tasks_user_id 
+FROM tasks 
+WHERE %(param_1)s = tasks.user_id
+2024-03-15 13:52:07,622 - sqlalchemy.engine.Engine - INFO - [cached since 21.69s ago] {'param_1': 2}
+2024-03-15 13:52:07,990 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "POST /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/sendMessage?chat_id=956183581&text=Gabriel%2C++Voc%C3%AA+esta+na+localiza%C3%A7%C3%A3o+de+entrega+de+um+frete%3A%0AComprar+limao+sabor+laranja%0AComprar+amanha HTTP/1.1" 200 347
+2024-03-15 13:52:07,991 - services.logger_service - INFO - Task with id=2 was successfully updated.
+2024-03-15 13:52:07,992 - sqlalchemy.engine.Engine - INFO - UPDATE tasks SET notification_happened=%(notification_happened)s WHERE tasks.id = %(tasks_id)s
+2024-03-15 13:52:07,993 - sqlalchemy.engine.Engine - INFO - [generated in 0.00036s] {'notification_happened': True, 'tasks_id': 2}
+2024-03-15 13:52:07,994 - sqlalchemy.engine.Engine - INFO - COMMIT
+2024-03-15 13:52:07,995 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-03-15 13:52:07,996 - sqlalchemy.engine.Engine - INFO - SELECT tasks.id AS tasks_id, tasks.header AS tasks_header, tasks.body AS tasks_body, tasks.location_latitude AS tasks_location_latitude, tasks.location_longitude AS tasks_location_longitude, tasks.radius AS tasks_radius, tasks.state AS tasks_state, tasks.notification_happened AS tasks_notification_happened, tasks.user_id AS tasks_user_id 
+FROM tasks 
+WHERE tasks.id = %(pk_1)s
+2024-03-15 13:52:07,997 - sqlalchemy.engine.Engine - INFO - [generated in 0.00042s] {'pk_1': 2}
+2024-03-15 13:52:07,997 - services.logger_service - INFO - User entered to task area, task marked as notification happened, task_id = 2
+2024-03-15 13:52:07,997 - sqlalchemy.engine.Engine - INFO - SELECT tasks.id AS tasks_id, tasks.header AS tasks_header, tasks.body AS tasks_body, tasks.location_latitude AS tasks_location_latitude, tasks.location_longitude AS tasks_location_longitude, tasks.radius AS tasks_radius, tasks.state AS tasks_state, tasks.notification_happened AS tasks_notification_happened, tasks.user_id AS tasks_user_id 
+FROM tasks 
+WHERE tasks.id = %(pk_1)s
+2024-03-15 13:52:07,998 - sqlalchemy.engine.Engine - INFO - [cached since 0.001543s ago] {'pk_1': 4}
+2024-03-15 13:52:07,998 - sqlalchemy.engine.Engine - INFO - SELECT tasks.id AS tasks_id, tasks.header AS tasks_header, tasks.body AS tasks_body, tasks.location_latitude AS tasks_location_latitude, tasks.location_longitude AS tasks_location_longitude, tasks.radius AS tasks_radius, tasks.state AS tasks_state, tasks.notification_happened AS tasks_notification_happened, tasks.user_id AS tasks_user_id 
+FROM tasks 
+WHERE tasks.id = %(pk_1)s
+2024-03-15 13:52:07,999 - sqlalchemy.engine.Engine - INFO - [cached since 0.002607s ago] {'pk_1': 6}
+2024-03-15 13:52:08,468 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "POST /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/sendMessage?chat_id=956183581&text=Gabriel%2C++Voc%C3%AA+esta+na+localiza%C3%A7%C3%A3o+de+entrega+de+um+frete%3A%0ASkdjjahda%0AJsjdjs HTTP/1.1" 200 321
+2024-03-15 13:52:08,468 - services.logger_service - INFO - Task with id=6 was successfully updated.
+2024-03-15 13:52:08,468 - sqlalchemy.engine.Engine - INFO - UPDATE tasks SET notification_happened=%(notification_happened)s WHERE tasks.id = %(tasks_id)s
+2024-03-15 13:52:08,469 - sqlalchemy.engine.Engine - INFO - [cached since 0.4764s ago] {'notification_happened': True, 'tasks_id': 6}
+2024-03-15 13:52:08,469 - sqlalchemy.engine.Engine - INFO - COMMIT
+2024-03-15 13:52:08,470 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-03-15 13:52:08,470 - sqlalchemy.engine.Engine - INFO - SELECT tasks.id AS tasks_id, tasks.header AS tasks_header, tasks.body AS tasks_body, tasks.location_latitude AS tasks_location_latitude, tasks.location_longitude AS tasks_location_longitude, tasks.radius AS tasks_radius, tasks.state AS tasks_state, tasks.notification_happened AS tasks_notification_happened, tasks.user_id AS tasks_user_id 
+FROM tasks 
+WHERE tasks.id = %(pk_1)s
+2024-03-15 13:52:08,471 - sqlalchemy.engine.Engine - INFO - [cached since 0.4757s ago] {'pk_1': 6}
+2024-03-15 13:52:08,472 - services.logger_service - INFO - User entered to task area, task marked as notification happened, task_id = 6
+2024-03-15 13:52:08,472 - sqlalchemy.engine.Engine - INFO - SELECT tasks.id AS tasks_id, tasks.header AS tasks_header, tasks.body AS tasks_body, tasks.location_latitude AS tasks_location_latitude, tasks.location_longitude AS tasks_location_longitude, tasks.radius AS tasks_radius, tasks.state AS tasks_state, tasks.notification_happened AS tasks_notification_happened, tasks.user_id AS tasks_user_id 
+FROM tasks 
+WHERE tasks.id = %(pk_1)s
+2024-03-15 13:52:08,472 - sqlalchemy.engine.Engine - INFO - [cached since 0.4769s ago] {'pk_1': 7}
+2024-03-15 13:52:08,932 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "POST /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/sendMessage?chat_id=956183581&text=Gabriel%2C++Voc%C3%AA+esta+na+localiza%C3%A7%C3%A3o+de+entrega+de+um+frete%3A%0ATeste%0ATestando HTTP/1.1" 200 319
+2024-03-15 13:52:08,932 - services.logger_service - INFO - Task with id=7 was successfully updated.
+2024-03-15 13:52:08,933 - sqlalchemy.engine.Engine - INFO - UPDATE tasks SET notification_happened=%(notification_happened)s WHERE tasks.id = %(tasks_id)s
+2024-03-15 13:52:08,933 - sqlalchemy.engine.Engine - INFO - [cached since 0.9405s ago] {'notification_happened': True, 'tasks_id': 7}
+2024-03-15 13:52:08,934 - sqlalchemy.engine.Engine - INFO - COMMIT
+2024-03-15 13:52:08,935 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-03-15 13:52:08,935 - sqlalchemy.engine.Engine - INFO - SELECT tasks.id AS tasks_id, tasks.header AS tasks_header, tasks.body AS tasks_body, tasks.location_latitude AS tasks_location_latitude, tasks.location_longitude AS tasks_location_longitude, tasks.radius AS tasks_radius, tasks.state AS tasks_state, tasks.notification_happened AS tasks_notification_happened, tasks.user_id AS tasks_user_id 
+FROM tasks 
+WHERE tasks.id = %(pk_1)s
+2024-03-15 13:52:08,935 - sqlalchemy.engine.Engine - INFO - [cached since 0.9392s ago] {'pk_1': 7}
+2024-03-15 13:52:08,935 - services.logger_service - INFO - User entered to task area, task marked as notification happened, task_id = 7
+2024-03-15 13:52:27,832 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079668&timeout=20 HTTP/1.1" 200 23
+2024-03-15 13:52:38,338 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079668&timeout=20 HTTP/1.1" 200 395
+2024-03-15 13:52:38,340 - sqlalchemy.engine.Engine - INFO - SELECT users.id AS users_id, users.hashed_chat_id AS users_hashed_chat_id, users.registration_date AS users_registration_date, users.geo_request_rate AS users_geo_request_rate 
+FROM users 
+WHERE users.id = %(pk_1)s
+2024-03-15 13:52:38,340 - sqlalchemy.engine.Engine - INFO - [generated in 0.00054s] {'pk_1': 2}
+2024-03-15 13:52:38,341 - sqlalchemy.engine.Engine - INFO - SELECT tasks.id AS tasks_id, tasks.header AS tasks_header, tasks.body AS tasks_body, tasks.location_latitude AS tasks_location_latitude, tasks.location_longitude AS tasks_location_longitude, tasks.radius AS tasks_radius, tasks.state AS tasks_state, tasks.notification_happened AS tasks_notification_happened, tasks.user_id AS tasks_user_id 
+FROM tasks 
+WHERE %(param_1)s = tasks.user_id
+2024-03-15 13:52:38,341 - sqlalchemy.engine.Engine - INFO - [cached since 52.41s ago] {'param_1': 2}
+2024-03-15 13:52:58,550 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079669&timeout=20 HTTP/1.1" 200 23
+2024-03-15 13:53:10,509 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079669&timeout=20 HTTP/1.1" 200 394
+2024-03-15 13:53:30,721 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079670&timeout=20 HTTP/1.1" 200 23
+2024-03-15 13:53:41,503 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079670&timeout=20 HTTP/1.1" 200 395
+2024-03-15 13:54:01,714 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079671&timeout=20 HTTP/1.1" 200 23
+2024-03-15 13:54:12,579 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079671&timeout=20 HTTP/1.1" 200 396
+2024-03-15 13:54:32,789 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079672&timeout=20 HTTP/1.1" 200 23
+2024-03-15 13:54:43,535 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079672&timeout=20 HTTP/1.1" 200 395
+2024-03-15 13:55:03,746 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079673&timeout=20 HTTP/1.1" 200 23
+2024-03-15 13:55:23,956 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079673&timeout=20 HTTP/1.1" 200 23
+2024-03-15 13:55:44,168 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079673&timeout=20 HTTP/1.1" 200 23
+2024-03-15 13:56:04,379 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079673&timeout=20 HTTP/1.1" 200 23
+2024-03-15 13:56:24,590 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079673&timeout=20 HTTP/1.1" 200 23
+2024-03-15 13:56:44,800 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079673&timeout=20 HTTP/1.1" 200 23
+2024-03-15 13:57:05,011 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079673&timeout=20 HTTP/1.1" 200 23
+2024-03-15 13:57:18,858 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079673&timeout=20 HTTP/1.1" 200 396
+2024-03-15 13:57:39,070 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079674&timeout=20 HTTP/1.1" 200 23
+2024-03-15 13:57:50,330 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079674&timeout=20 HTTP/1.1" 200 396
+2024-03-15 13:58:10,542 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079675&timeout=20 HTTP/1.1" 200 23
+2024-03-15 13:58:20,892 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079675&timeout=20 HTTP/1.1" 200 395
+2024-03-15 13:58:41,111 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079676&timeout=20 HTTP/1.1" 200 23
+2024-03-15 13:58:51,937 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079676&timeout=20 HTTP/1.1" 200 395
+2024-03-15 13:59:12,151 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079677&timeout=20 HTTP/1.1" 200 23
+2024-03-15 13:59:22,819 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079677&timeout=20 HTTP/1.1" 200 395
+2024-03-15 13:59:43,029 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079678&timeout=20 HTTP/1.1" 200 23
+2024-03-15 13:59:54,143 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079678&timeout=20 HTTP/1.1" 200 395
+2024-03-15 14:00:14,354 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079679&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:00:34,565 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079679&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:00:54,777 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079679&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:01:14,990 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079679&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:01:14,992 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2024-03-15 14:01:35,666 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079679&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:01:55,888 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079679&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:02:16,108 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079679&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:02:36,330 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079679&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:02:56,551 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079679&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:02:59,972 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079679&timeout=20 HTTP/1.1" 200 395
+2024-03-15 14:03:20,193 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079680&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:03:30,957 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079680&timeout=20 HTTP/1.1" 200 395
+2024-03-15 14:03:51,177 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079681&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:04:02,301 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079681&timeout=20 HTTP/1.1" 200 395
+2024-03-15 14:04:22,521 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079682&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:04:33,218 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079682&timeout=20 HTTP/1.1" 200 395
+2024-03-15 14:04:53,440 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:05:13,660 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:05:33,880 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:05:54,102 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:06:14,322 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:06:34,544 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:06:54,764 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:07:14,983 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:07:35,205 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:07:55,426 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:08:15,646 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:08:35,870 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:08:56,090 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:09:16,310 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:09:36,531 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:09:56,751 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:10:16,972 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:10:37,193 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:10:57,413 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:11:17,634 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:11:17,636 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2024-03-15 14:11:38,315 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:11:58,546 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:12:07,625 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2024-03-15 14:12:08,406 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "POST /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/sendMessage?chat_id=956183581&text=Gabriel%2C+parece+que+o+periodo+de+compartilhamento+de+localiza%C3%A7%C3%A3o+acabou%2C+por+favor+compartilhe+novamente+a+localiza%C3%A7%C3%A3o%2C+para+que+seja+poss%C3%ADvel+o+acompanhamento+dos+fretes. HTTP/1.1" 200 425
+2024-03-15 14:12:08,406 - services.logger_service - INFO - For chat_id=956183581 live location period was over, message sended.
+2024-03-15 14:12:18,775 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:12:39,004 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:12:59,230 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:13:19,456 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:13:39,681 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:13:59,910 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:14:20,132 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:14:40,353 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:15:00,578 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:15:20,800 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:15:41,030 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:16:01,260 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:16:21,487 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:16:41,711 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:17:01,944 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:17:22,167 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:17:42,399 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:18:02,623 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:18:22,853 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:18:43,081 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:19:03,304 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:19:23,565 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:19:43,794 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:20:04,030 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:20:24,259 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:20:44,482 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:21:04,712 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:21:24,943 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:21:24,946 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2024-03-15 14:21:45,609 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:22:05,826 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:22:26,045 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:22:46,268 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:23:06,494 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:23:26,711 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:23:46,928 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:24:07,145 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:24:27,364 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:24:47,581 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:25:07,797 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:25:28,015 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:25:48,233 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:26:08,451 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:26:28,668 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:26:48,884 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:27:09,103 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:27:29,321 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:27:49,538 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:28:09,756 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:28:29,974 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:28:50,191 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:29:10,408 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:29:30,625 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:29:50,842 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:30:11,059 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:30:31,276 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:30:51,493 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:31:11,711 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:31:31,927 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:31:31,929 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2024-03-15 14:31:52,576 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:32:12,787 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:32:33,003 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:32:53,215 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:33:13,426 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:33:33,640 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:33:53,852 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:34:14,065 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:34:34,278 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:34:54,489 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:35:14,700 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:35:34,912 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:35:55,183 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:36:15,397 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:36:35,609 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:36:55,819 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:37:16,031 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:37:36,254 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:37:56,468 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:38:16,680 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:38:36,909 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:38:57,122 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:39:17,334 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:39:37,555 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:39:57,777 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:40:17,994 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:40:38,216 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:40:58,434 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:41:18,649 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:41:38,863 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:41:38,865 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2024-03-15 14:41:59,509 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:42:19,722 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:42:39,932 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:43:00,144 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:43:20,353 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:43:40,566 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:44:00,776 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:44:20,987 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:44:41,198 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:45:01,412 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:45:21,622 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:45:41,833 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:46:02,043 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:46:22,253 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:46:42,464 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:47:02,676 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:47:22,886 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:47:43,097 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:48:03,307 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:48:23,517 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:48:43,728 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:49:03,939 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:49:24,149 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:49:44,359 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:50:04,569 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:50:24,781 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:50:44,992 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:51:05,201 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:51:25,411 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:51:45,622 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:51:45,624 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2024-03-15 14:52:06,317 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:52:26,558 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:52:46,838 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:53:07,087 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:53:27,369 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:53:47,592 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:54:07,824 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:54:28,076 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:54:48,309 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:55:08,542 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:55:28,783 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:55:49,012 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:56:09,242 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:56:29,490 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:56:49,732 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:57:09,971 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:57:30,233 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:57:50,458 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:58:10,701 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:58:30,938 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:58:51,168 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:59:11,400 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:59:31,639 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 14:59:51,862 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:00:12,098 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:00:32,361 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:00:52,588 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:01:12,829 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:01:33,076 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:01:53,366 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:01:53,368 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2024-03-15 15:02:14,026 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:02:34,242 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:02:54,457 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:03:14,672 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:03:34,887 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:03:55,102 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:04:15,317 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:04:35,532 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:04:55,747 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:05:15,963 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:05:36,177 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:05:56,392 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:06:16,607 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:06:36,823 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:06:57,038 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:07:17,252 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:07:37,468 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:07:57,684 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:08:17,898 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:08:38,114 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:08:58,331 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:09:18,544 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:09:38,760 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:09:58,975 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:10:19,195 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:10:39,409 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:10:59,624 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:11:19,840 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:11:40,056 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:12:00,273 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:12:00,275 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2024-03-15 15:12:20,918 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:12:41,129 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:13:01,340 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:13:21,553 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:13:41,763 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:14:01,979 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:14:22,188 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:14:42,399 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:15:02,610 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:15:22,821 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:15:43,031 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:16:03,242 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:16:23,452 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:16:43,663 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:17:03,873 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:17:24,083 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:17:44,294 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:18:04,507 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:18:24,717 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:18:44,928 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:19:05,137 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:19:25,348 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:19:45,559 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:20:05,771 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:20:25,988 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:20:46,199 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:21:06,409 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:21:26,620 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:21:46,831 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:22:07,041 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:22:07,043 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2024-03-15 15:22:27,704 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:22:47,917 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:23:08,135 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:23:28,346 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:23:48,556 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:24:08,767 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:24:28,979 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:24:49,190 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:25:09,401 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:25:29,612 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:25:49,833 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:26:10,043 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:26:30,254 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:26:50,465 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:27:10,675 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:27:30,886 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:27:51,096 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:28:11,307 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:28:33,121 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:28:53,333 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:29:13,542 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:29:33,758 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:29:53,969 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:30:14,179 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:30:34,389 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:30:54,601 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:31:14,812 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:31:35,023 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:31:55,236 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:32:15,447 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:32:15,449 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2024-03-15 15:32:36,105 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:32:56,322 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:33:16,537 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:33:36,752 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:33:56,969 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:34:17,184 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:34:37,419 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:34:57,632 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:35:17,845 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:35:38,060 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:35:58,279 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:36:18,493 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:36:38,709 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:36:58,923 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:37:19,140 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:37:39,360 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:37:59,584 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:38:19,796 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:38:40,011 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:39:00,228 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:39:20,449 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:39:40,663 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:40:00,876 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:40:21,087 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:40:41,303 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:41:01,526 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:41:21,739 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:41:41,962 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:42:02,179 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:42:22,397 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:42:22,399 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2024-03-15 15:42:43,083 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:43:03,305 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:43:23,527 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:43:43,746 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:44:03,965 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:44:24,188 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:44:44,409 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:45:04,631 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:45:24,850 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:45:45,067 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:46:05,283 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:46:25,506 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:46:45,722 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:47:05,989 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:47:26,216 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:47:46,437 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:48:06,662 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:48:26,891 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:48:47,108 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:49:07,323 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:49:27,542 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:49:47,764 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:50:07,988 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:50:28,208 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:50:48,440 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:51:08,656 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:51:28,879 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:51:49,097 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:52:09,321 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:52:29,538 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:52:29,540 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2024-03-15 15:52:50,207 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:53:10,426 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:53:30,646 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:53:50,864 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:54:11,081 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:54:31,300 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:54:51,517 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:55:11,736 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:55:31,953 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:55:52,171 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:56:12,389 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:56:32,606 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:56:52,827 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:57:13,046 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:57:33,280 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:57:53,501 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:58:13,717 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:58:33,935 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:58:54,151 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:59:14,371 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:59:34,593 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 15:59:54,813 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 16:00:15,034 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 16:00:35,254 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 16:00:55,474 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 16:01:15,695 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 16:01:35,915 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 16:01:56,144 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 16:02:16,366 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 16:02:36,584 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079683&timeout=20 HTTP/1.1" 200 23
+2024-03-15 16:02:36,587 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2024-03-15 17:33:28,350 - urllib3.util.retry - DEBUG - Converted retries value: 2 -> Retry(total=2, connect=None, read=None, redirect=None, status=None)
+2024-03-15 17:33:28,350 - urllib3.util.retry - DEBUG - Converted retries value: 2 -> Retry(total=2, connect=None, read=None, redirect=None, status=None)
+2024-03-15 17:33:28,357 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2024-03-15 17:33:29,026 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getMe HTTP/1.1" 200 202
+2024-03-15 17:33:29,028 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2024-03-15 17:33:43,197 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 318
+2024-03-15 17:33:43,199 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2024-03-15 17:33:44,014 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/sendChatAction?chat_id=956183581&action=typing HTTP/1.1" 200 25
+2024-03-15 17:33:44,040 - sqlalchemy.engine.Engine - INFO - select pg_catalog.version()
+2024-03-15 17:33:44,040 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2024-03-15 17:33:44,041 - sqlalchemy.engine.Engine - INFO - select current_schema()
+2024-03-15 17:33:44,041 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2024-03-15 17:33:44,041 - sqlalchemy.engine.Engine - INFO - show standard_conforming_strings
+2024-03-15 17:33:44,041 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2024-03-15 17:33:44,042 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-03-15 17:33:44,047 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.hashed_chat_id, users.registration_date, users.geo_request_rate 
+FROM users 
+WHERE users.hashed_chat_id = %(hashed_chat_id_1)s
+2024-03-15 17:33:44,048 - sqlalchemy.engine.Engine - INFO - [generated in 0.00036s] {'hashed_chat_id_1': 'c458cf0a8bc0309ad28d5a51808f1c3c'}
+2024-03-15 17:33:44,447 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "POST /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/sendMessage?chat_id=956183581&text=Ola%2C+Gabriel%2C+a+quanto+tempo%2C+como+posso+te+ajudar%3F HTTP/1.1" 200 280
+2024-03-15 17:33:44,803 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/sendChatAction?chat_id=956183581&action=typing HTTP/1.1" 200 25
+2024-03-15 17:33:45,191 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "POST /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/sendMessage?chat_id=956183581&text=%2Fstart+-+initial+function%2C+which+register+user+based+on+chat+id%0A%0A%2Fget_active_tasks+-+returns+all+active+tasks+for+current+user%0A%0A%2Fhelp+-+will+show+available+commands%0A%0A%2Fadd_task+-+will+add+a+new+task+for+you+and+save+it+in+database%0A%0A%2Fdelete_task+-+delete+task+with+id%2C+specified+after+command%2Cseparated+by+space+%28for+example%3A+%2Fdelete_task+42%29%0A%0A%2Fcomplete_task+-+mark+task+as+completed%2Ctask+id+must+be+specified+after+command%2C+separated+by+space%28for+example%3A+%2Fcomplete_task+42%29%0A%0A%2Fedit_task+-+command+will+edit+task+with+given+id%2Csyntax+must+be+like+this%3A+%2Fedit_task+34+header%3Dnew_header+body%3Dnew_body%2Cso+after+command+goes+task+id%2C+separated+by+space%2C+after+idwill+go+parameters+which+you+want+to+edit+with+parameter+name+equals+valuetask+id+must+be+specified+after+command%2C+separated+by+space%0A%0A HTTP/1.1" 200 1517
+2024-03-15 17:33:56,394 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079684&timeout=20 HTTP/1.1" 200 330
+2024-03-15 17:33:56,395 - services.logger_service - INFO - Get active tasks for cid(956183581).
+2024-03-15 17:33:56,395 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.hashed_chat_id, users.registration_date, users.geo_request_rate 
+FROM users 
+WHERE users.hashed_chat_id = %(hashed_chat_id_1)s
+2024-03-15 17:33:56,396 - sqlalchemy.engine.Engine - INFO - [cached since 12.35s ago] {'hashed_chat_id_1': 'c458cf0a8bc0309ad28d5a51808f1c3c'}
+2024-03-15 17:33:56,399 - sqlalchemy.engine.Engine - INFO - SELECT tasks.id AS tasks_id, tasks.header AS tasks_header, tasks.body AS tasks_body, tasks.location_latitude AS tasks_location_latitude, tasks.location_longitude AS tasks_location_longitude, tasks.radius AS tasks_radius, tasks.state AS tasks_state, tasks.notification_happened AS tasks_notification_happened, tasks.user_id AS tasks_user_id 
+FROM tasks 
+WHERE %(param_1)s = tasks.user_id
+2024-03-15 17:33:56,399 - sqlalchemy.engine.Engine - INFO - [generated in 0.00047s] {'param_1': 2}
+2024-03-15 17:33:56,402 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2024-03-15 17:33:57,201 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "POST /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/sendMessage?chat_id=956183581&text=%234%0ATeste+location%0ALocation HTTP/1.1" 200 257
+2024-03-15 17:33:57,208 - urllib3.util.retry - DEBUG - Converted retries value: 2 -> Retry(total=2, connect=None, read=None, redirect=None, status=None)
+2024-03-15 17:33:57,208 - urllib3.util.retry - DEBUG - Converted retries value: 2 -> Retry(total=2, connect=None, read=None, redirect=None, status=None)
+2024-03-15 17:33:57,208 - geopy - DEBUG - Nominatim.reverse: https://nominatim.openstreetmap.org/reverse?lat=-20.1747332&lon=-40.20634577412598&format=json&addressdetails=1
+2024-03-15 17:33:57,208 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): nominatim.openstreetmap.org:443
+2024-03-15 17:33:57,918 - urllib3.connectionpool - DEBUG - https://nominatim.openstreetmap.org:443 "GET /reverse?lat=-20.1747332&lon=-40.20634577412598&format=json&addressdetails=1 HTTP/1.1" 200 1039
+2024-03-15 17:33:58,279 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "POST /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/sendMessage?chat_id=956183581&text=%232%0AComprar+limao+sabor+laranja%0AComprar+amanha%0Alocation%3A+Rua+Flor+de+Cerejeira%2C+Feu+Rosa%2C+Serra%2C+Regi%C3%A3o+Geogr%C3%A1fica+Imediata+de+Vit%C3%B3ria%2C+Regi%C3%A3o+Metropolitana+da+Grande+Vit%C3%B3ria%2C+Regi%C3%A3o+Geogr%C3%A1fica+Intermedi%C3%A1ria+de+Vit%C3%B3ria%2C+Esp%C3%ADrito+Santo%2C+Regi%C3%A3o+Sudeste%2C+29172-070%2C+Brasil%0Aradius%3A+1000+meteres HTTP/1.1" 200 577
+2024-03-15 17:33:58,285 - urllib3.util.retry - DEBUG - Converted retries value: 2 -> Retry(total=2, connect=None, read=None, redirect=None, status=None)
+2024-03-15 17:33:58,285 - urllib3.util.retry - DEBUG - Converted retries value: 2 -> Retry(total=2, connect=None, read=None, redirect=None, status=None)
+2024-03-15 17:33:58,286 - geopy - DEBUG - Nominatim.reverse: https://nominatim.openstreetmap.org/reverse?lat=-20.169154832272245&lon=-40.21560217771688&format=json&addressdetails=1
+2024-03-15 17:33:58,286 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): nominatim.openstreetmap.org:443
+2024-03-15 17:33:58,972 - urllib3.connectionpool - DEBUG - https://nominatim.openstreetmap.org:443 "GET /reverse?lat=-20.169154832272245&lon=-40.21560217771688&format=json&addressdetails=1 HTTP/1.1" 200 1088
+2024-03-15 17:33:59,326 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "POST /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/sendMessage?chat_id=956183581&text=%236%0ASkdjjahda%0AJsjdjs%0Alocation%3A+Avenida+Burle+Marx%2C+Condom%C3%ADnio%2C+Boulevard+Lagoa%2C+Serra%2C+Regi%C3%A3o+Geogr%C3%A1fica+Imediata+de+Vit%C3%B3ria%2C+Regi%C3%A3o+Metropolitana+da+Grande+Vit%C3%B3ria%2C+Regi%C3%A3o+Geogr%C3%A1fica+Intermedi%C3%A1ria+de+Vit%C3%B3ria%2C+Esp%C3%ADrito+Santo%2C+Regi%C3%A3o+Sudeste%2C+29167-300%2C+Brasil%0Aradius%3A+1000+meteres HTTP/1.1" 200 572
+2024-03-15 17:33:59,332 - urllib3.util.retry - DEBUG - Converted retries value: 2 -> Retry(total=2, connect=None, read=None, redirect=None, status=None)
+2024-03-15 17:33:59,332 - urllib3.util.retry - DEBUG - Converted retries value: 2 -> Retry(total=2, connect=None, read=None, redirect=None, status=None)
+2024-03-15 17:33:59,333 - geopy - DEBUG - Nominatim.reverse: https://nominatim.openstreetmap.org/reverse?lat=-20.169154832272245&lon=-40.21560217771688&format=json&addressdetails=1
+2024-03-15 17:33:59,333 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): nominatim.openstreetmap.org:443
+2024-03-15 17:33:59,965 - urllib3.connectionpool - DEBUG - https://nominatim.openstreetmap.org:443 "GET /reverse?lat=-20.169154832272245&lon=-40.21560217771688&format=json&addressdetails=1 HTTP/1.1" 200 1088
+2024-03-15 17:34:00,319 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "POST /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/sendMessage?chat_id=956183581&text=%237%0ATeste%0ATestando%0Alocation%3A+Avenida+Burle+Marx%2C+Condom%C3%ADnio%2C+Boulevard+Lagoa%2C+Serra%2C+Regi%C3%A3o+Geogr%C3%A1fica+Imediata+de+Vit%C3%B3ria%2C+Regi%C3%A3o+Metropolitana+da+Grande+Vit%C3%B3ria%2C+Regi%C3%A3o+Geogr%C3%A1fica+Intermedi%C3%A1ria+de+Vit%C3%B3ria%2C+Esp%C3%ADrito+Santo%2C+Regi%C3%A3o+Sudeste%2C+29167-300%2C+Brasil%0Aradius%3A+1000+meteres HTTP/1.1" 200 570
+2024-03-15 17:34:09,248 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079685&timeout=20 HTTP/1.1" 200 320
+2024-03-15 17:34:29,467 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079686&timeout=20 HTTP/1.1" 200 23
+2024-03-15 17:34:46,345 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079686&timeout=20 HTTP/1.1" 200 381
+2024-03-15 17:34:46,345 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.hashed_chat_id, users.registration_date, users.geo_request_rate 
+FROM users 
+WHERE users.hashed_chat_id = %(hashed_chat_id_1)s
+2024-03-15 17:34:46,346 - sqlalchemy.engine.Engine - INFO - [cached since 62.3s ago] {'hashed_chat_id_1': 'c458cf0a8bc0309ad28d5a51808f1c3c'}
+2024-03-15 17:34:46,348 - sqlalchemy.engine.Engine - INFO - SELECT delivery.id AS delivery_id, delivery.pickup_latitude AS delivery_pickup_latitude, delivery.pickup_longitude AS delivery_pickup_longitude, delivery.information AS delivery_information, delivery.price AS delivery_price, delivery.radius AS delivery_radius, delivery.state AS delivery_state, delivery.notification_happened AS delivery_notification_happened, delivery.user_id AS delivery_user_id 
+FROM delivery 
+WHERE %(param_1)s = delivery.user_id
+2024-03-15 17:34:46,348 - sqlalchemy.engine.Engine - INFO - [generated in 0.00045s] {'param_1': 2}
+2024-03-15 17:34:46,713 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "POST /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/sendMessage?chat_id=956183581&text=Gabriel%2C++Voc%C3%AA+esta+na+localiza%C3%A7%C3%A3o+de+entrega+de+um+frete%3A%0A+R%2410%0A+informa%C3%A7%C3%B5es%3ADeixar+na+portaria HTTP/1.1" 200 352
+2024-03-15 17:34:46,713 - services.logger_service - INFO - Task with id=1 was successfully updated.
+2024-03-15 17:34:46,714 - sqlalchemy.engine.Engine - INFO - UPDATE delivery SET state=%(state)s, notification_happened=%(notification_happened)s WHERE delivery.id = %(delivery_id)s
+2024-03-15 17:34:46,714 - sqlalchemy.engine.Engine - INFO - [generated in 0.00033s] {'state': 'in_route', 'notification_happened': Decimal('1'), 'delivery_id': 1}
+2024-03-15 17:34:46,715 - sqlalchemy.engine.Engine - INFO - COMMIT
+2024-03-15 17:34:46,716 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-03-15 17:34:46,717 - sqlalchemy.engine.Engine - INFO - SELECT delivery.id AS delivery_id, delivery.pickup_latitude AS delivery_pickup_latitude, delivery.pickup_longitude AS delivery_pickup_longitude, delivery.information AS delivery_information, delivery.price AS delivery_price, delivery.radius AS delivery_radius, delivery.state AS delivery_state, delivery.notification_happened AS delivery_notification_happened, delivery.user_id AS delivery_user_id 
+FROM delivery 
+WHERE delivery.id = %(pk_1)s
+2024-03-15 17:34:46,717 - sqlalchemy.engine.Engine - INFO - [generated in 0.00043s] {'pk_1': 1}
+2024-03-15 17:34:46,718 - services.logger_service - INFO - User entered to task area, task marked as notification happened, task_id = 1
+2024-03-15 17:35:06,577 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079687&timeout=20 HTTP/1.1" 200 23
+2024-03-15 17:35:26,809 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=159079687&timeout=20 HTTP/1.1" 200 23
