@@ -1,0 +1,70 @@
+2024-03-18 16:58:53,001 - urllib3.util.retry - DEBUG - Converted retries value: 2 -> Retry(total=2, connect=None, read=None, redirect=None, status=None)
+2024-03-18 16:58:53,001 - urllib3.util.retry - DEBUG - Converted retries value: 2 -> Retry(total=2, connect=None, read=None, redirect=None, status=None)
+2024-03-18 16:58:53,018 - urllib3.util.retry - DEBUG - Converted retries value: 2 -> Retry(total=2, connect=None, read=None, redirect=None, status=None)
+2024-03-18 16:58:53,018 - urllib3.util.retry - DEBUG - Converted retries value: 2 -> Retry(total=2, connect=None, read=None, redirect=None, status=None)
+2024-03-18 16:59:17,788 - urllib3.util.retry - DEBUG - Converted retries value: 2 -> Retry(total=2, connect=None, read=None, redirect=None, status=None)
+2024-03-18 16:59:17,788 - urllib3.util.retry - DEBUG - Converted retries value: 2 -> Retry(total=2, connect=None, read=None, redirect=None, status=None)
+2024-03-18 16:59:17,796 - urllib3.util.retry - DEBUG - Converted retries value: 2 -> Retry(total=2, connect=None, read=None, redirect=None, status=None)
+2024-03-18 16:59:17,796 - urllib3.util.retry - DEBUG - Converted retries value: 2 -> Retry(total=2, connect=None, read=None, redirect=None, status=None)
+2024-03-18 17:01:40,492 - urllib3.util.retry - DEBUG - Converted retries value: 2 -> Retry(total=2, connect=None, read=None, redirect=None, status=None)
+2024-03-18 17:01:40,492 - urllib3.util.retry - DEBUG - Converted retries value: 2 -> Retry(total=2, connect=None, read=None, redirect=None, status=None)
+2024-03-18 17:01:40,508 - urllib3.util.retry - DEBUG - Converted retries value: 2 -> Retry(total=2, connect=None, read=None, redirect=None, status=None)
+2024-03-18 17:01:40,508 - urllib3.util.retry - DEBUG - Converted retries value: 2 -> Retry(total=2, connect=None, read=None, redirect=None, status=None)
+2024-03-18 17:01:40,513 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2024-03-18 17:01:41,174 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getMe HTTP/1.1" 200 202
+2024-03-18 17:01:41,177 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2024-03-18 17:01:41,815 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 556
+2024-03-18 17:01:41,817 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2024-03-18 17:01:42,579 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/sendChatAction?chat_id=5454565219&action=typing HTTP/1.1" 200 25
+2024-03-18 17:01:42,605 - sqlalchemy.engine.Engine - INFO - select pg_catalog.version()
+2024-03-18 17:01:42,605 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2024-03-18 17:01:42,606 - sqlalchemy.engine.Engine - INFO - select current_schema()
+2024-03-18 17:01:42,606 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2024-03-18 17:01:42,607 - sqlalchemy.engine.Engine - INFO - show standard_conforming_strings
+2024-03-18 17:01:42,607 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2024-03-18 17:01:42,607 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-03-18 17:01:42,613 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.hashed_chat_id, users.registration_date, users.geo_request_rate 
+FROM users 
+WHERE users.hashed_chat_id = %(hashed_chat_id_1)s
+2024-03-18 17:01:42,613 - sqlalchemy.engine.Engine - INFO - [generated in 0.00038s] {'hashed_chat_id_1': '23a3eb3aba8d6d789a356b733252c0df'}
+2024-03-18 17:01:42,965 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "POST /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/sendMessage?chat_id=5454565219&text=Ola%2C+Sfalsin%2C+a+quanto+tempo%2C+como+posso+te+ajudar%3F HTTP/1.1" 200 281
+2024-03-18 17:01:43,297 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/sendChatAction?chat_id=5454565219&action=typing HTTP/1.1" 200 25
+2024-03-18 17:01:43,660 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "POST /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/sendMessage?chat_id=5454565219&text=%2Fstart+-+initial+function%2C+which+register+user+based+on+chat+id%0A%0A%2Fget_active_tasks+-+returns+all+active+tasks+for+current+user%0A%0A%2Fhelp+-+will+show+available+commands%0A%0A%2Fadd_task+-+will+add+a+new+task+for+you+and+save+it+in+database%0A%0A%2Fdelete_task+-+delete+task+with+id%2C+specified+after+command%2Cseparated+by+space+%28for+example%3A+%2Fdelete_task+42%29%0A%0A%2Fcomplete_task+-+mark+task+as+completed%2Ctask+id+must+be+specified+after+command%2C+separated+by+space%28for+example%3A+%2Fcomplete_task+42%29%0A%0A%2Fedit_task+-+command+will+edit+task+with+given+id%2Csyntax+must+be+like+this%3A+%2Fedit_task+34+header%3Dnew_header+body%3Dnew_body%2Cso+after+command+goes+task+id%2C+separated+by+space%2C+after+idwill+go+parameters+which+you+want+to+edit+with+parameter+name+equals+valuetask+id+must+be+specified+after+command%2C+separated+by+space%0A%0A HTTP/1.1" 200 1518
+2024-03-18 17:02:04,173 - urllib3.util.retry - DEBUG - Converted retries value: 2 -> Retry(total=2, connect=None, read=None, redirect=None, status=None)
+2024-03-18 17:02:04,173 - urllib3.util.retry - DEBUG - Converted retries value: 2 -> Retry(total=2, connect=None, read=None, redirect=None, status=None)
+2024-03-18 17:02:04,181 - urllib3.util.retry - DEBUG - Converted retries value: 2 -> Retry(total=2, connect=None, read=None, redirect=None, status=None)
+2024-03-18 17:02:04,181 - urllib3.util.retry - DEBUG - Converted retries value: 2 -> Retry(total=2, connect=None, read=None, redirect=None, status=None)
+2024-03-18 17:02:04,185 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2024-03-18 17:02:04,818 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getMe HTTP/1.1" 200 202
+2024-03-18 17:02:04,819 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2024-03-18 17:02:18,378 - urllib3.util.retry - DEBUG - Converted retries value: 2 -> Retry(total=2, connect=None, read=None, redirect=None, status=None)
+2024-03-18 17:02:18,378 - urllib3.util.retry - DEBUG - Converted retries value: 2 -> Retry(total=2, connect=None, read=None, redirect=None, status=None)
+2024-03-18 17:02:18,386 - urllib3.util.retry - DEBUG - Converted retries value: 2 -> Retry(total=2, connect=None, read=None, redirect=None, status=None)
+2024-03-18 17:02:18,386 - urllib3.util.retry - DEBUG - Converted retries value: 2 -> Retry(total=2, connect=None, read=None, redirect=None, status=None)
+2024-03-18 17:02:18,390 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2024-03-18 17:02:19,040 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getMe HTTP/1.1" 200 202
+2024-03-18 17:02:19,042 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2024-03-18 17:03:50,462 - urllib3.util.retry - DEBUG - Converted retries value: 2 -> Retry(total=2, connect=None, read=None, redirect=None, status=None)
+2024-03-18 17:03:50,463 - urllib3.util.retry - DEBUG - Converted retries value: 2 -> Retry(total=2, connect=None, read=None, redirect=None, status=None)
+2024-03-18 17:03:50,470 - urllib3.util.retry - DEBUG - Converted retries value: 2 -> Retry(total=2, connect=None, read=None, redirect=None, status=None)
+2024-03-18 17:03:50,470 - urllib3.util.retry - DEBUG - Converted retries value: 2 -> Retry(total=2, connect=None, read=None, redirect=None, status=None)
+2024-03-18 17:03:50,475 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2024-03-18 17:03:51,100 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getMe HTTP/1.1" 200 202
+2024-03-18 17:03:51,101 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2024-03-18 17:03:51,773 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/getUpdates?offset=1&timeout=20 HTTP/1.1" 200 320
+2024-03-18 17:03:51,775 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2024-03-18 17:03:52,531 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/sendChatAction?chat_id=5454565219&action=typing HTTP/1.1" 200 25
+2024-03-18 17:03:52,557 - sqlalchemy.engine.Engine - INFO - select pg_catalog.version()
+2024-03-18 17:03:52,557 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2024-03-18 17:03:52,558 - sqlalchemy.engine.Engine - INFO - select current_schema()
+2024-03-18 17:03:52,558 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2024-03-18 17:03:52,558 - sqlalchemy.engine.Engine - INFO - show standard_conforming_strings
+2024-03-18 17:03:52,559 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2024-03-18 17:03:52,559 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2024-03-18 17:03:52,564 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.hashed_chat_id, users.registration_date, users.geo_request_rate 
+FROM users 
+WHERE users.hashed_chat_id = %(hashed_chat_id_1)s
+2024-03-18 17:03:52,565 - sqlalchemy.engine.Engine - INFO - [generated in 0.00037s] {'hashed_chat_id_1': '23a3eb3aba8d6d789a356b733252c0df'}
+2024-03-18 17:03:52,917 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "POST /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/sendMessage?chat_id=5454565219&text=Ola%2C+Sfalsin%2C+a+quanto+tempo%2C+como+posso+te+ajudar%3F HTTP/1.1" 200 281
+2024-03-18 17:03:53,256 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/sendChatAction?chat_id=5454565219&action=typing HTTP/1.1" 200 25
+2024-03-18 17:03:53,622 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "POST /bot6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw/sendMessage?chat_id=5454565219&text=%2Fstart+-+initial+function%2C+which+register+user+based+on+chat+id%0A%0A%2Fget_active_tasks+-+returns+all+active+tasks+for+current+user%0A%0A%2Fhelp+-+will+show+available+commands%0A%0A%2Fadd_task+-+will+add+a+new+task+for+you+and+save+it+in+database%0A%0A%2Fdelete_task+-+delete+task+with+id%2C+specified+after+command%2Cseparated+by+space+%28for+example%3A+%2Fdelete_task+42%29%0A%0A%2Fcomplete_task+-+mark+task+as+completed%2Ctask+id+must+be+specified+after+command%2C+separated+by+space%28for+example%3A+%2Fcomplete_task+42%29%0A%0A%2Fedit_task+-+command+will+edit+task+with+given+id%2Csyntax+must+be+like+this%3A+%2Fedit_task+34+header%3Dnew_header+body%3Dnew_body%2Cso+after+command+goes+task+id%2C+separated+by+space%2C+after+idwill+go+parameters+which+you+want+to+edit+with+parameter+name+equals+valuetask+id+must+be+specified+after+command%2C+separated+by+space%0A%0A HTTP/1.1" 200 1518

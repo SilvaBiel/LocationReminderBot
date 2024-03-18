@@ -2,6 +2,7 @@ import telebot
 import logging
 from services.user_service import UserService
 from services.task_service import TaskService
+from services.delivery_service import DeliveryService
 from services import help_search_service
 from model.entity.user import User
 from model.entity.task import Task
@@ -15,9 +16,10 @@ import time
 from services.logger_service import logger
 
 
-bot = telebot.TeleBot("6865164360:AAEtzqmqdOgyMS_noCi7JrUVLXspB4ubxsw")#os.getenv("REMINDER_BOT_TOKEN"))
+bot = telebot.TeleBot(os.getenv("REMINDER_BOT_TOKEN"))
 task_service = TaskService()
 user_service = UserService()
+delivery_service = DeliveryService()
 task_service.bot = bot
 
 chat_id_cache = dict()
@@ -229,7 +231,7 @@ def handle_live_location_delivery(message):
         thread.start()
 
     chat_id_cache[chat_id]["last_live_location_share_time"] = datetime.now()
-    delivery_list = user.delivery_list
+    delivery_list = delivery_service.get_all_deliveries()
     for delivery in delivery_list:
         pickup_latitude = delivery.pickup_latitude
         pickup_longitude = delivery.pickup_longitude
@@ -367,4 +369,5 @@ def get_user_from_cache(chat_id):
 
 
 if __name__ == '__main__':
+    print("THIS IS .ENV ",os.getenv("REMINDER_BOT_TOKEN"))
     bot.polling()
